@@ -1,0 +1,146 @@
+.App {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #FCF8E3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  background: #FCF8E3;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFCE7; /* Set your background color */
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  font-size: medium;
+}
+
+.slick-prev, .slick-next {
+  display: block !important;
+  width: 80px; /* Adjust the width as needed */
+  height: 80px; /* Adjust the height as needed */
+  background-color: #e8e8e4;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+
+  &:active {
+    transform: translateY(-50%), scale(0.95);
+    box-shadow: 0 0 0;
+  }
+}
+
+
+
+
+/* Common styles for tablets and phones */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .App-header {
+    min-height: auto; /* Adjust header height for tablets */
+  }
+
+  .App-logo {
+    height: 30vmin; /* Adjust logo size for tablets */
+  }
+
+  .card {
+    padding: 12px; /* Adjust card padding for tablets */
+    margin: 12px; /* Adjust card margin for tablets */
+  }
+
+  .slick-prev, .slick-next {
+    width: 60px; /* Adjust navigation button size for tablets */
+    height: 60px; /* Adjust navigation button size for tablets */
+  }
+}
+
+/* Media query for phones */
+@media only screen and (max-width: 599px) {
+  .App {
+    flex-direction: column; /* Stack items vertically for phones */
+  }
+
+  .App-header {
+    min-height: auto; /* Adjust header height for phones */
+    font-size: calc(10px + 1.5vmin); /* Adjust font size for phones */
+  }
+
+  .App-logo {
+    height: 20vmin; /* Adjust logo size for phones */
+  }
+
+  .card {
+    padding: 8px; /* Adjust card padding for phones */
+    margin: 8px; /* Adjust card margin for phones */
+  }
+
+  .slick-prev, .slick-next {
+    width: 40px; /* Adjust navigation button size for phones */
+    height: 40px; /* Adjust navigation button size for phones */
+  }
+}
+
+

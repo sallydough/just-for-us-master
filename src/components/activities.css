@@ -1,0 +1,217 @@
+@import "~slick-carousel/slick/slick.css";
+
+@import "~slick-carousel/slick/slick-theme.css";
+
+.linkStyle {
+  text-decoration: none;
+  color: #fff;
+  pointer-events: none;
+}
+
+#contacts {
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.slider-call {
+  display: flex;
+  flex-direction: column;
+  padding-top: 9rem;
+}
+
+.call-help h1 {
+  margin: 1rem;
+}
+
+.arrow-down {
+  display: flex;
+  flex-direction: column;
+  margin-left: 47%;
+}
+
+.home-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 0;
+  margin-top: 34px;
+  position: fixed;
+}
+
+@media screen and (min-width: 768px) {
+  #contacts {
+    padding: 20px;
+  }
+
+  .slider {
+    width: 80%;
+  }
+
+  .slide {
+    height: 27rem;
+    padding: 4rem 3rem;
+  }
+
+  .slide h1 {
+    font-size: 60px;
+  }
+
+}
+/* change centering between carousel slides */
+.slick-slide > div {
+  display: flex;
+  place-items: center;
+  width: 100%;
+  margin-top: 50px;
+  margin: auto;
+  padding: 0px;
+}
+
+/* change centering of carousel div in relation to whole page */
+.slider {
+  display: block;
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+
+.slide {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  transform: scale(0.7);
+  transition: transform 300ms;
+  opacity: 1;
+  gap: 0.8rem;
+  height: 27rem;
+  padding: 4rem 3rem;
+  background-color: #7f8181;
+  border-radius: 3rem;
+  position: relative;
+}
+
+.slide h1 {
+  padding: 30px;
+  font-size: 60px;
+}
+
+.slide .nav-icon {
+  margin-top: 30px;
+}
+
+.activeSlide {
+  transform: scale(0.9);
+  opacity: 1;
+  background-color: #f3b718;
+}
+
+.arrow {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+.arrow-up {
+  color: #f8d408;
+  z-index: 10;
+  right: 45%;
+  top: -17%;
+}
+svg.arrow-up,
+svg.arrow-down {
+  vertical-align: middle;
+}
+svg.arrow-up {
+  margin-left: 45%;
+}
+
+svg.arrow-down {
+  margin-left: 48.5%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #68edff;
+}
+
+.next {
+  right: -8%;
+  top: 39%;
+}
+
+.prev {
+  left: -8%;
+  top: 40%;
+}
+
+/* Moving the prompt on bottom of contact carousel */
+.prompt h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #2e3e5e;
+  position: absolute;
+
+  left: 46%;
+  top: 94%;
+}
+
+/* contacts.css or your custom style sheet */
+.custom-modal {
+  background-color: goldenrod;
+  border: 1px solid #ccc;
+  padding: 100px;
+  width: 900px;
+  height: 500px;
+  margin: 10px 20px 30px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 2rem;
+}
+
+.custom-modal h2 {
+  font-size: 100px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.custom-modal button {
+  background-color: #48ccac;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-right: auto;
+  width: 200px;
+  height: 100px;
+  margin-right: 50px;
+  font-size: 45px;
+}
+
+.custom-modal button:hover {
+  background-color: #48ccac;
+}
+.centered-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.activitiesArrowUp {
+  margin-left: 7%;
+}
+
+.activitiesArrowDown {
+  margin-left: 0.8%;
+}

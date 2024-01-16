@@ -1,0 +1,130 @@
+@import "~slick-carousel/slick/slick.css";
+
+@import "~slick-carousel/slick/slick-theme.css";
+
+.linkStyle {
+  text-decoration: none;
+  color: #fff;
+  pointer-events: none;
+}
+
+#lights {
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.slider-call {
+  display: flex;
+  flex-direction: column;
+  padding-top: 9rem;
+}
+/* change centering between carousel slides */
+.slick-slide > div {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin-top: 50px;
+  margin: auto;
+  padding: 0px;
+}
+
+/* change centering of carousel div in relation to whole page */
+#lights > .slider-call-1 > .slider {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+
+#lights > .slider-call-1 > .slider > .slide {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  transform: scale(0.7);
+  transition: transform 300ms;
+  opacity: 0.5;
+  gap: 0.8rem;
+  height: 27rem;
+  padding: 4rem 3rem;
+  background-color: #7f8181;
+  border-radius: 3rem;
+  position: relative;
+}
+
+.slide h1 {
+  padding: 30px;
+  font-size: 60px;
+}
+
+.slide .nav-icon {
+  margin-top: 30px;
+}
+
+.activeSlide {
+  transform: scale(0.9);
+  opacity: 1;
+  background-color: #f3b718;
+}
+
+.arrow {
+  color: #f8d408;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+.arrow-up {
+  color: #f8d408;
+  z-index: 10;
+  right: 45%;
+  top: -17%;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #68edff;
+}
+
+.next {
+  right: -8%;
+  top: 39%;
+}
+
+.prev {
+  left: -8%;
+  top: 40%;
+}
+svg.arrow-up,
+svg.arrow-down {
+  vertical-align: middle;
+}
+
+svg.arrow-up {
+  margin-right: 45%;
+}
+
+svg.arrow-down {
+  margin-left: 52.5%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
+}
+
+/* Moving the prompt on bottom of contact carousel */
+.promptLights h1 {
+  display: block;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  color: #2e3e5e;
+  position: absolute;
+
+  top: 88%;
+}

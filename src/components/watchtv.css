@@ -1,0 +1,70 @@
+.tvLink {
+  text-decoration: none;
+  color: #fff;
+  pointer-events: none;
+  position: relative;
+  top: -80px;
+  left: -150px;
+}
+
+.button {
+  padding: 20px;
+  background-color: #f3b718;
+  color: #f7f2f2;
+  font-weight: 800;
+  font-size: 62px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 800px;
+  height: 400px;
+  padding-bottom: -30px;
+}
+
+.button:hover {
+  background-color: #748087;
+}
+
+.arrow-up {
+  color: #f8d408;
+  z-index: 10;
+  right: 45%;
+  top: -17%;
+}
+.arrow-down {
+  color: #f5d25e;
+  z-index: 10;
+  right: 45%;
+  top: -17%;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+/* svg.arrow-up, svg.arrow-down {
+  vertical-align: middle;
+} */
+
+svg.arrow-up {
+  margin-left: 52.5%;
+}
+
+svg.arrow-down {
+  margin-left: 50%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
+}
+
+#tv {
+  padding-top: 2%;
+  padding-left: 37%;
+}
+
+.tvArrowUp {
+  margin-left: 15%;
+}
+
+.tvArrowDown {
+  margin-left: 9.3%;
+}

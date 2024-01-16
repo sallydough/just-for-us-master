@@ -1105,12 +1105,12 @@ import Activities from "../components/Activities";
 
 const HomeContainer = styled.div`
   position: relative;
-  top: 150px;
+  top: 230px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 40vh;
   text-align: center;
 `;
 const CarouselWrapper = styled.div`

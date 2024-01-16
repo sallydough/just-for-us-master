@@ -22,16 +22,6 @@
   padding-top: 9rem;
 }
 
-.call-help h1 {
-  margin: 1rem;
-}
-
-.arrow-down {
-  display: flex;
-  flex-direction: column;
-  margin-left: 47%;
-}
-
 .home-logo {
   display: flex;
   flex-direction: row;
@@ -73,7 +63,7 @@
 /* change centering of carousel div in relation to whole page */
 .slider {
   display: block;
-  margin: auto;
+  margin: 5px auto;
   width: 80%;
   padding: 10px;
 }

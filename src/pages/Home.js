@@ -1126,35 +1126,26 @@ const CarouselWrapper = styled.div`
   opacity: ${(props) => (props.active ? 1 : 0.5)};
   border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
-  
+
   // Media Queries
   @media only screen and (min-width: 600px) and (max-width: 1024px) {
-   background-color: #eef596;
-   .styled.div{
-    transition: transform 0.9s easein, background 0.6s ease, color 0.6s ease;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    top: 50px;
-    left: .5;
-    right: .5;
-    min-height: 20vh;
-   
-   }
-      
-   
-
- 
-
-
-  
-   
+    background-color: #eef596;
+    .styled.div {
+      transition: transform 0.9s easein, background 0.6s ease, color 0.6s ease;
+      width: 40px;
+      height: 40px;
+      position: relative;
+      top: 50px;
+      left: 0.5;
+      right: 0.5;
+      min-height: 20vh;
+    }
   }
 
   @media only screen and (max-width: 578px) {
     body {
       background-color: #dde816;
-      }
+    }
   }
   // display: flex;
   // place-items: center;
@@ -1476,7 +1467,6 @@ const Home = () => {
       }
     };
 
-
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
@@ -1496,8 +1486,9 @@ const Home = () => {
   return (
     <>
       <HomeContainer disableHover={disableHover}>
-        {/* Card Carousel */}
-        <CarouselWrapper active={activeCarousel === "cardData"}>
+        <CarouselWrapper
+          active={activeCarousel === "cardData"}
+          onClick={() => handleCarouselChange("componentData")}>
           <CarouselDivBox active={activeCarousel === "cardData"}>
             <Slider
               {...settings}
@@ -1532,8 +1523,10 @@ const Home = () => {
           </CarouselDivBox>
         </CarouselWrapper>
       </HomeContainer>
-      {/* Component Carousel */}
-      <CarouselWrapper active={activeCarousel === "componentData"}>
+
+      <CarouselWrapper
+        active={activeCarousel === "componentData"}
+        onClick={() => handleCarouselChange("cardData")}>
         {centerCardIndex === 0 && <Television ref={tvRef} />}
         {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
         {centerCardIndex === 2 && (
@@ -1541,8 +1534,8 @@ const Home = () => {
         )}
         {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
         {centerCardIndex === 5 && <Lights ref={lightsRef} />}
-        {/* ... add more components if needed */}
       </CarouselWrapper>
+
       <CallHelpButtonComponent />
     </>
   );

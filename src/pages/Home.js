@@ -1105,7 +1105,7 @@ import Activities from "../components/Activities";
 
 const HomeContainer = styled.div`
   position: relative;
-  top: 240px;
+  top: 150px;
   left: 0;
   right: 0;
   display: flex;
@@ -1120,48 +1120,58 @@ const CarouselWrapper = styled.div`
   justify-content: center;
   display: unset;
   place-items: center;
-
-  /* Add styles for border and opacity */
-  // border: ${(props) => (props.active ? "8px solid yellow" : "none")};
   opacity: ${(props) => (props.active ? 1 : 0.5)};
   border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
 
-  // Media Queries
-  @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    background-color: #eef596;
-    .styled.div {
-      transition: transform 0.9s easein, background 0.6s ease, color 0.6s ease;
-      width: 40px;
-      height: 40px;
-      position: relative;
-      top: 50px;
-      left: 0.5;
-      right: 0.5;
-      min-height: 20vh;
-    }
+  &:hover,
+  &:active,
+  &:focus,
+  &:touch {
+    cursor: pointer;
   }
-
-  @media only screen and (max-width: 578px) {
-    body {
-      background-color: #dde816;
-    }
-  }
-  // display: flex;
-  // place-items: center;
-  // width: 100%;
-  // margin-top: 50px;
-  // margin: auto;
-  // padding: 0px;
 `;
+
+// Media query for tablets (landscape and portrait)
+const tabletMediaQuery = `
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+    font-size: 20px;
+  }
+`;
+
+// Media query for phones
+const phoneMediaQuery = `
+  @media only screen and (max-width: 599px) {
+     font-size: 16px;
+     display: grid;
+  }
+`;
+
 const CardColumn = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  }   
-  `;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:touch {
+    cursor: pointer;
+  }
+
+  ${tabletMediaQuery} {
+    /* Add additional styles for tablets */
+    // Example:
+    // font-size: 18px;
+  }
+  ${phoneMediaQuery} {
+    /* Add additional styles for phones */
+    // Example:
+    // font-size: 14px;
+  }
+`;
 
 const CustomArrowButton = styled.div`
   width: 80px;
@@ -1187,6 +1197,11 @@ const StyledProfileCard = styled(ProfileCard)`
   font-size: 25px;
   margin: 80px;
 
+  &:active,
+  &:focus,
+  &:touch {
+    cursor: pointer;
+  }
   &:hover {
     transform: scale(1.1);
     .icon-container {
@@ -1198,6 +1213,7 @@ const StyledProfileCard = styled(ProfileCard)`
 
   &.slick-center {
     transform: scale(1.5);
+    cursor: pointer;
     background: yellow;
     .icon-container {
       svg {
@@ -1209,10 +1225,12 @@ const StyledProfileCard = styled(ProfileCard)`
   /* Add new styles for opacity and border */
   &.active-card {
     opacity: 1;
+    cursor: pointer;
   }
 
   &.inactive-card {
     opacity: 0.5;
+    cursor: pointer;
   }
 `;
 
@@ -1298,11 +1316,6 @@ const cardData = [
 const CarouselDivBox = styled.div`
   display: block;
   justify-content: center;
-
-  // border: ${(props) => (props.active ? "5px solid yellow" : "none")};
-  // opacity: ${(props) => (props.active ? 1 : 0.5)};
-  // border-radius: 10px;
-  // transition: border 0.3s ease, opacity 0.3s ease;
 `;
 
 const Home = () => {
@@ -1317,7 +1330,7 @@ const Home = () => {
     centerMode: true,
     centerPadding: "0",
     infinite: true,
-    speed: 500,
+    speed: 150,
     slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow data-clickable="true" />,
@@ -1486,9 +1499,11 @@ const Home = () => {
   return (
     <>
       <HomeContainer disableHover={disableHover}>
+        {/* Card Carousel */}
         <CarouselWrapper
           active={activeCarousel === "cardData"}
-          onClick={() => handleCarouselChange("componentData")}>
+          onClick={() => handleCarouselChange("cardData")}
+          onTouchStart={() => handleCarouselChange("cardData")}>
           <CarouselDivBox active={activeCarousel === "cardData"}>
             <Slider
               {...settings}
@@ -1523,19 +1538,18 @@ const Home = () => {
           </CarouselDivBox>
         </CarouselWrapper>
       </HomeContainer>
-
+      {/* Component Carousel */}
       <CarouselWrapper
         active={activeCarousel === "componentData"}
-        onClick={() => handleCarouselChange("cardData")}>
+        onClick={() => handleCarouselChange("componentData")}
+        onTouchStart={() => handleCarouselChange("componentData")}>
         {centerCardIndex === 0 && <Television ref={tvRef} />}
         {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
-        {centerCardIndex === 2 && (
-          <Entertainment ref={(ref) => (entertainmentRef.current = ref)} />
-        )}
+        {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
         {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
         {centerCardIndex === 5 && <Lights ref={lightsRef} />}
+        {/* ... add more components if needed */}
       </CarouselWrapper>
-
       <CallHelpButtonComponent />
     </>
   );

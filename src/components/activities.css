@@ -48,7 +48,6 @@
   .slide h1 {
     font-size: 60px;
   }
-
 }
 /* change centering between carousel slides */
 .slick-slide > div {
@@ -145,13 +144,13 @@ svg.arrow-down {
 
 /* Moving the prompt on bottom of contact carousel */
 .prompt h1 {
-  margin: 0;
+  width: 100vw;
+  text-align: center;
   font-size: 50px;
   color: #2e3e5e;
-  position: absolute;
+  /* position: absolute; */
 
-  left: 46%;
-  top: 94%;
+  top: 92%;
 }
 
 /* contacts.css or your custom style sheet */

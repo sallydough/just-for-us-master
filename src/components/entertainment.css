@@ -138,16 +138,13 @@ svg.arrow-down {
 
 /* Moving the prompt on bottom of contact carousel */
 .promptEntertainment h1 {
-  display: block;
-  align-items: center;
-  margin: 0;
-  width: 100%;
+  width: 100vw;
   text-align: center;
   font-size: 50px;
   color: #2e3e5e;
-  position: absolute;
+  /* position: absolute; */
 
-  top: 88%;
+  top: 90%;
 }
 
 /* contacts.css or your custom stylesheet */
@@ -193,7 +190,6 @@ svg.arrow-down {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 /* Media query for tablets (landscape and portrait) */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {

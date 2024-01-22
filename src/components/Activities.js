@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
-
 import { GrYoga } from "react-icons/gr";
 import { GiTeacher, GiRollingDices } from "react-icons/gi";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import styled from "styled-components";
-
 import "./activities.css";
 
 const CustomArrowButton = styled.div`
@@ -112,39 +110,12 @@ const Activities = () => {
   const activitiesRef = useRef(null);
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (activitiesRef.current) {
-        switch (event.key) {
-          case "ArrowLeft":
-            activitiesRef.current.slickPrev();
-            break;
-          case "ArrowRight":
-            activitiesRef.current.slickNext();
-            break;
-          default:
-            break;
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    // No keyboard navigation logic here, effectively disabled
   }, [cardIndex]);
 
   return (
     <>
       <div id="activities" className="settings">
-        {/* <Link to="/" className="linkStyle">
-          <div className="up-arrow activitiesArrowUp">
-            <IoIosArrowUp size={90} className="arrow-up" />
-          </div>
-          <div className="down-arrow activitiesArrowDown">
-            <IoIosArrowDown size={90} className="arrow-down" />
-          </div>
-        </Link> */}
         <div className="slider-call-1">
           <div className="slider">
             <Slider

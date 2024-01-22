@@ -29,35 +29,35 @@
 //     name: "CHAIR YOGA 9:00AM TODAY",
 //     pathway: "/home",
 //     call: "JOIN NOW",
-//     icon: <GrYoga size={170} className="nav-icon" />,
+//     icon: <GrYoga size={170} color="white" className="nav-icon" />,
 //   },
 //   {
 //     id: 2,
 //     name: "CHEESECAKE WITH COURTNEY 3:00PM TODAY",
 //     pathway: "/iotControls",
 //     call: "",
-//     icon: <GiTeacher size={170} className="nav-icon" />,
+//     icon: <GiTeacher size={170} color="white" className="nav-icon" />,
 //   },
 //   {
 //     id: 3,
 //     name: "SPOT THE DIFFERENCE 4:00PM TODAY ",
 //     pathway: "/entertainment",
 //     call: "",
-//     icon: <GiRollingDices size={170} className="nav-icon" />,
+//     icon: <GiRollingDices size={170} color="white" className="nav-icon" />,
 //   },
 //   {
 //     id: 4,
 //     name: "TRAVEL STORY WITH JEN 5:00PM TODAY",
 //     pathway: "/calendar",
 //     call: "",
-//     icon: <GiTeacher size={170} className="nav-icon" />,
+//     icon: <GiTeacher size={170} color="white" className="nav-icon" />,
 //   },
 //   {
 //     id: 5,
 //     name: "FAMILY FEUD 6:00PM TODAY",
 //     pathway: "/calendar",
 //     call: "",
-//     icon: <GiRollingDices size={170} className="nav-icon" />,
+//     icon: <GiRollingDices size={170} color="white" className="nav-icon" />,
 //   },
 //   {
 //     id: 6,
@@ -109,22 +109,22 @@
 
 //   return (
 //     <>
-//       <div id="activities" className="settings">
-//         <div className="slider-call-1">
-//           <div className="slider">
+//       <div id="activities" color="white" className="settings">
+//         <div color="white" className="slider-call-1">
+//           <div color="white" className="slider">
 //             <Slider {...slidesSettings}>
 //               {contactList.map((card, idx) => (
 //                 <div
 //                   key={card.id}
 //                   onClick={() => console.log(`Clicked on ${card.name}`)}
-//                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
+//                   color="white" className={idx === cardIndex ? "slide activeSlide" : "slide"}>
 //                   {card.icon}
-//                   <h1 className="card-name">{card.name}</h1>
+//                   <h1 color="white" className="card-name">{card.name}</h1>
 //                 </div>
 //               ))}
 //             </Slider>
 //           </div>
-//           <div className="prompt">
+//           <div color="white" className="prompt">
 //             <h1>{contactList[cardIndex].call}</h1>
 //           </div>
 //         </div>
@@ -180,21 +180,21 @@ const contactList = [
     name: "SPOT THE DIFFERENCE 4:00PM TODAY ",
     pathway: "/entertainment",
     call: "",
-    icon: <GiRollingDices size={170} className="nav-icon" />,
+    icon: <GiRollingDices size={170} color="white" className="nav-icon" />,
   },
   {
     id: 4,
     name: "TRAVEL STORY WITH JEN 5:00PM TODAY",
     pathway: "/calendar",
     call: "",
-    icon: <GiTeacher size={170} className="nav-icon" />,
+    icon: <GiTeacher size={170} color="white" className="nav-icon" />,
   },
   {
     id: 5,
     name: "FAMILY FEUD 6:00PM TODAY",
     pathway: "/calendar",
     call: "",
-    icon: <GiRollingDices size={170} className="nav-icon" />,
+    icon: <GiRollingDices size={170} color="white" className="nav-icon" />,
   },
   {
     id: 6,
@@ -242,27 +242,30 @@ const Activities = () => {
     centerPadding: 0,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-    beforeChange: (current, next) => setCardIndex(next === 2 ? 1 : next), // Keep the middle slide (index 1) as active
+    beforeChange: (current, next) => setCardIndex(next),
   };
 
   return (
     <>
-      <div id="activities" className="settings">
-        <div className="slider-call-1">
-          <div className="slider">
+      <div id="activities" color="white" className="settings">
+        <div color="white" className="slider-call-1">
+          <div color="white" className="slider">
             <Slider {...slidesSettings}>
               {contactList.map((card, idx) => (
                 <div
                   key={card.id}
                   onClick={() => console.log(`Clicked on ${card.name}`)}
+                  color="white"
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   {card.icon}
-                  <h1 className="card-name">{card.name}</h1>
+                  <h1 color="white" className="card-name">
+                    {card.name}
+                  </h1>
                 </div>
               ))}
             </Slider>
           </div>
-          <div className="prompt">
+          <div color="white" className="prompt">
             <h1>{contactList[cardIndex].call}</h1>
           </div>
         </div>

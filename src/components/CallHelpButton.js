@@ -44,7 +44,7 @@ const CallHelpButton = styled.button`
 const BottomCenterButtonContainer = styled.div`
   position: fixed;
   top: 20px;
-  bottom: 20px;
+  
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;

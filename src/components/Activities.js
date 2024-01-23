@@ -67,7 +67,8 @@ const Activities = React.forwardRef((props, ref) => {
   
   const navigateToZoomLink = (link) => {
     if (link) {
-      window.location.href = link;
+      //removes pop-ups when redirecting to link
+      window.location.replace(link,)
     } else {
       console.log("No Zoom link available for this event.");
     }
@@ -125,7 +126,7 @@ const Activities = React.forwardRef((props, ref) => {
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   {/* Render your event data here */}
                  
-                  <h1>{event.item}</h1>
+                  <h1 >{event.item}</h1>
                    <p color="white" className="card-name">
                     {event.name}
                   </p>

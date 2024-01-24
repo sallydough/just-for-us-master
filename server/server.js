@@ -5,9 +5,11 @@ const app = express();
 const port = 3001; // or any other port you prefer
 
 // Twilio credentials
+
 const accountSid = "AC2fb69e8e2d9680ecff0ed479789fdb24";
 const authToken = "ded53ce1590196939394c2323f35233f";
 const twilioPhoneNumber = "+18624374931";
+
 
 const client = twilio(accountSid, authToken);
 

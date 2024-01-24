@@ -1,9 +1,7 @@
-// import { useState, useEffect } from "react";
+// import React, { useState, useEffect, useRef } from "react";
 // import Slider from "react-slick";
-// import { Link } from "react-router-dom";
-// import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-// import { BsLightbulbFill, BsLightbulb } from "react-icons/bs";
 
+// import { BsLightbulbFill, BsLightbulb } from "react-icons/bs";
 // import "./lights.css";
 // import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 // import styled from "styled-components";
@@ -59,29 +57,32 @@
 // const Lights = () => {
 //   const [cardIndex, setCardIndex] = useState(0);
 //   const [isYellow, setIsYellow] = useState(false);
+//   const sliderRef = useRef(null);
 
 //   const toggleColor = () => {
 //     setIsYellow((prevIsYellow) => !prevIsYellow);
 //   };
 
-//   const CustomNextArrow = ({ onClick }) => (
+//   const CustomNextArrow = () => (
 //     <CustomArrowButton
-//       onClick={() =>
-//         setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length)
-//       }
+//       onClick={() => {
+//         setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length);
+//         sliderRef.current.slickNext();
+//       }}
 //       style={{ right: -100 }}>
 //       <ChevronRightIcon />
 //     </CustomArrowButton>
 //   );
 
-//   const CustomPrevArrow = ({ onClick }) => (
+//   const CustomPrevArrow = () => (
 //     <CustomArrowButton
-//       onClick={() =>
+//       onClick={() => {
 //         setCardIndex(
 //           (prevIndex) =>
 //             (prevIndex - 1 + contactList.length) % contactList.length
-//         )
-//       }
+//         );
+//         sliderRef.current.slickPrev();
+//       }}
 //       style={{ left: -100 }}>
 //       <ChevronLeftIcon />
 //     </CustomArrowButton>
@@ -96,15 +97,25 @@
 //     centerPadding: 0,
 //     nextArrow: <CustomNextArrow />,
 //     prevArrow: <CustomPrevArrow />,
+//     beforeChange: (current, next) => setCardIndex(next),
 //   };
+
+//   const lightsRef = useRef(null);
+
+//   useEffect(() => {
+//     // Ensure focus on the Lights component for keyboard navigation
+//     lightsRef.current.focus();
+//   }, []);
 
 //   const handleKeyDown = (event) => {
 //     if (event.key === "ArrowLeft") {
 //       setCardIndex(
 //         (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
 //       );
+//       sliderRef.current.slickPrev();
 //     } else if (event.key === "ArrowRight") {
 //       setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length);
+//       sliderRef.current.slickNext();
 //     } else if (event.key === "Enter") {
 //       // Handle the logic to toggle light on or off for the selected card
 //       console.log("Toggle light for card:", contactList[cardIndex].name);
@@ -112,29 +123,24 @@
 //     }
 //   };
 
-//   useEffect(() => {
-//     // Ensure focus on the Lights component for keyboard navigation
-//     const lightsComponent = document.getElementById("lights");
-//     lightsComponent.focus();
-//   }, []);
-
 //   return (
 //     <div
 //       id="lights"
 //       className="settings"
 //       onKeyDown={handleKeyDown}
-//       tabIndex="0">
-//       <Link to="/" className="linkStyle">
+//       tabIndex="0"
+//       ref={lightsRef}>
+//       {/* <Link to="/" className="linkStyle">
 //         <div className="up-arrow">
 //           <IoIosArrowUp size={90} className="arrow-up" />
 //         </div>
 //         <div className="down-arrow">
 //           <IoIosArrowDown size={90} className="arrow-down" />
 //         </div>
-//       </Link>
+//       </Link> */}
 //       <div className="slider-call-1">
 //         <div className="slider">
-//           <Slider className="linkStyle" {...slidesSettings}>
+//           <Slider className="linkStyle" {...slidesSettings} ref={sliderRef}>
 //             {contactList.map((card, idx) => (
 //               <div
 //                 key={card.id}
@@ -153,7 +159,7 @@
 //             ))}
 //           </Slider>
 //         </div>
-//         <div className="prompt">
+//         <div className="promptLights">
 //           <h1>{contactList[cardIndex].call}</h1>
 //         </div>
 //       </div>
@@ -163,10 +169,8 @@
 
 // export default Lights;
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { BsLightbulbFill, BsLightbulb } from "react-icons/bs";
 import "./lights.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
@@ -223,31 +227,30 @@ const contactList = [
 const Lights = () => {
   const [cardIndex, setCardIndex] = useState(0);
   const [isYellow, setIsYellow] = useState(false);
-  const sliderRef = useRef(null);
 
   const toggleColor = () => {
     setIsYellow((prevIsYellow) => !prevIsYellow);
   };
 
-  const CustomNextArrow = () => (
+  const CustomNextArrow = ({ onClick }) => (
     <CustomArrowButton
       onClick={() => {
         setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length);
-        sliderRef.current.slickNext();
+        onClick();
       }}
       style={{ right: -100 }}>
       <ChevronRightIcon />
     </CustomArrowButton>
   );
 
-  const CustomPrevArrow = () => (
+  const CustomPrevArrow = ({ onClick }) => (
     <CustomArrowButton
       onClick={() => {
         setCardIndex(
           (prevIndex) =>
             (prevIndex - 1 + contactList.length) % contactList.length
         );
-        sliderRef.current.slickPrev();
+        onClick();
       }}
       style={{ left: -100 }}>
       <ChevronLeftIcon />
@@ -266,47 +269,11 @@ const Lights = () => {
     beforeChange: (current, next) => setCardIndex(next),
   };
 
-  const lightsRef = useRef(null);
-
-  useEffect(() => {
-    // Ensure focus on the Lights component for keyboard navigation
-    lightsRef.current.focus();
-  }, []);
-
-  const handleKeyDown = (event) => {
-    if (event.key === "ArrowLeft") {
-      setCardIndex(
-        (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
-      );
-      sliderRef.current.slickPrev();
-    } else if (event.key === "ArrowRight") {
-      setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length);
-      sliderRef.current.slickNext();
-    } else if (event.key === "Enter") {
-      // Handle the logic to toggle light on or off for the selected card
-      console.log("Toggle light for card:", contactList[cardIndex].name);
-      toggleColor(); // Toggle light color
-    }
-  };
-
   return (
-    <div
-      id="lights"
-      className="settings"
-      onKeyDown={handleKeyDown}
-      tabIndex="0"
-      ref={lightsRef}>
-      {/* <Link to="/" className="linkStyle">
-        <div className="up-arrow">
-          <IoIosArrowUp size={90} className="arrow-up" />
-        </div>
-        <div className="down-arrow">
-          <IoIosArrowDown size={90} className="arrow-down" />
-        </div>
-      </Link> */}
+    <div id="lights" className="settings">
       <div className="slider-call-1">
         <div className="slider">
-          <Slider className="linkStyle" {...slidesSettings} ref={sliderRef}>
+          <Slider {...slidesSettings}>
             {contactList.map((card, idx) => (
               <div
                 key={card.id}

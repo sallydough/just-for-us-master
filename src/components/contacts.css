@@ -147,12 +147,13 @@ svg.arrow-down {
 
 /* Moving the prompt on bottom of contact carousel */
 .prompt h1 {
-  margin: 0;
+  width: 100vw;
+  text-align: center;
   font-size: 50px;
   color: #2e3e5e;
-  position: absolute;
-  left: 48%;
-  top: 97%;
+  /* position: absolute; */
+
+  top: 92%;
 }
 
 .card-name {
@@ -205,18 +206,15 @@ svg.arrow-down {
 
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
-<<<<<<< HEAD
   .linkStyle {
-   
     font-size: 10px;
     top: -40px;
   }
-  
+
   #contacts {
     width: 50%;
-   
   }
-   
+
   /* change centering between carousel slides */
   /* .slick-slide > div {
   
@@ -226,27 +224,27 @@ svg.arrow-down {
    */
   /* change centering of carousel div in relation to whole page */
   .slider {
-   width: 70%;
-   }
-  
+    width: 70%;
+  }
+
   .slide {
     transform: scale(0.5);
     height: 20rem;
     margin-top: 10rem;
-    }
-  
+  }
+
   .slide h1 {
     padding: 10px;
     font-size: 30px;
   }
-  
+
   /* .slide .nav-icon {
     margin-top: 10px;
   } */
-  
-.activeSlide {
-  transform: scale(0.4);
-}
+
+  .activeSlide {
+    transform: scale(0.4);
+  }
   .arrow {
     z-index: 5;
   }
@@ -262,34 +260,31 @@ svg.arrow-down {
     top: -7%;
   }
   .next {
-    right: -.8%;
+    right: -0.8%;
     top: 17%;
   }
-  
+
   .prev {
-    left: -.8%;
+    left: -0.8%;
     top: 20%;
   }
-  
- 
-  
+
   svg.arrow-up {
     margin-right: 20%;
   }
-  
+
   svg.arrow-down {
     margin-left: 23%;
     padding-top: -5%;
-    padding: .5px;
+    padding: 0.5px;
     margin-top: -33px;
   }
-  
+
   /* Moving the prompt on bottom of contact carousel */
   .prompt h1 {
     font-size: 10px;
     left: 30%;
     top: 55%;
-
   }
 }
 

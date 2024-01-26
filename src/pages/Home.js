@@ -718,7 +718,7 @@ const Home = () => {
     centerMode: true,
     centerPadding: "0",
     infinite: true,
-    speed: 150,
+    speed: 250,
     slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow data-clickable="true" />,
@@ -751,60 +751,60 @@ const Home = () => {
 
   return (
     <>
-    <section id="home">
-      <HomeContainer disableHover={disableHover}>
-        {/* Card Carousel */}
+      <section id="home">
+        <HomeContainer disableHover={disableHover}>
+          {/* Card Carousel */}
+          <CarouselWrapper
+            active={activeCarousel === "cardData"}
+            onClick={() => handleCarouselChange("cardData")}
+            onTouchStart={() => handleCarouselChange("cardData")}>
+            <CarouselDivBox active={activeCarousel === "cardData"}>
+              <Slider
+                {...settings}
+                ref={sliderRef}
+                beforeChange={() => handleCarouselChange("cardData")}>
+                {cardData.map((card, index) => (
+                  <CardColumn key={index}>
+                    <StyledProfileCard
+                      link={card.link}
+                      icon={card.icon}
+                      title={card.title}
+                      active={index === centerCardIndex}
+                      className={
+                        activeCarousel === "cardData"
+                          ? "active-card"
+                          : "inactive-card"
+                      }
+                    />
+                    <PromptDiv>
+                      {index === centerCardIndex && (
+                        <SpaceBeforeBelowCard>
+                          {card.spaceBeforeBelowCard}
+                        </SpaceBeforeBelowCard>
+                      )}
+                      {index === centerCardIndex && (
+                        <TextBelowCard>{card.textBelowCard}</TextBelowCard>
+                      )}
+                    </PromptDiv>
+                  </CardColumn>
+                ))}
+              </Slider>
+            </CarouselDivBox>
+          </CarouselWrapper>
+        </HomeContainer>
+        {/* Component Carousel */}
         <CarouselWrapper
-          active={activeCarousel === "cardData"}
-          onClick={() => handleCarouselChange("cardData")}
-          onTouchStart={() => handleCarouselChange("cardData")}>
-          <CarouselDivBox active={activeCarousel === "cardData"}>
-            <Slider
-              {...settings}
-              ref={sliderRef}
-              beforeChange={() => handleCarouselChange("cardData")}>
-              {cardData.map((card, index) => (
-                <CardColumn key={index}>
-                  <StyledProfileCard
-                    link={card.link}
-                    icon={card.icon}
-                    title={card.title}
-                    active={index === centerCardIndex}
-                    className={
-                      activeCarousel === "cardData"
-                        ? "active-card"
-                        : "inactive-card"
-                    }
-                  />
-                  <PromptDiv>
-                    {index === centerCardIndex && (
-                      <SpaceBeforeBelowCard>
-                        {card.spaceBeforeBelowCard}
-                      </SpaceBeforeBelowCard>
-                    )}
-                    {index === centerCardIndex && (
-                      <TextBelowCard>{card.textBelowCard}</TextBelowCard>
-                    )}
-                  </PromptDiv>
-                </CardColumn>
-              ))}
-            </Slider>
-          </CarouselDivBox>
+          active={activeCarousel === "componentData"}
+          onClick={() => handleCarouselChange("componentData")}
+          onTouchStart={() => handleCarouselChange("componentData")}>
+          {centerCardIndex === 0 && <Television ref={tvRef} />}
+          {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
+          {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
+          {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
+          {centerCardIndex === 5 && <Lights ref={lightsRef} />}
+          {/* ... add more components if needed */}
         </CarouselWrapper>
-      </HomeContainer>
-      {/* Component Carousel */}
-      <CarouselWrapper
-        active={activeCarousel === "componentData"}
-        onClick={() => handleCarouselChange("componentData")}
-        onTouchStart={() => handleCarouselChange("componentData")}>
-        {centerCardIndex === 0 && <Television ref={tvRef} />}
-        {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
-        {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
-        {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
-        {centerCardIndex === 5 && <Lights ref={lightsRef} />}
-        {/* ... add more components if needed */}
-      </CarouselWrapper>
-      <CallHelpButtonComponent />
+        <CallHelpButtonComponent />
       </section>
     </>
   );

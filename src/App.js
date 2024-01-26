@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 // import ThermostatCard from "./components/ThermostatCard";
 import Home from "./pages/Home";
+import LoginSignup from "./components/UserLogin/LoginSignUp";
 // import Services from "./pages/Services";
 // import DoorLockPage from "./pages/DoorLockPage";
 // import Entertainment from "./pages/Entertainment";
@@ -17,7 +18,11 @@ import Home from "./pages/Home";
 function App() {
   return (
     <Router>
-      <Home />
+    
+      <Routes>
+      <Route path="/" element={<LoginSignup/>} />
+      <Route path="/home" element={<Home />} />
+      </Routes>
       {/* <Routes>
         <Route path="/garden-loft-app/home" element={<Home />} />
         <Route path="/garden-loft-app/door-lock" element={<DoorLockPage />} />

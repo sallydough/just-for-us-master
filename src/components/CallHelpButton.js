@@ -6,6 +6,21 @@ import TelephoneIcon from "./icons/TelephoneIcon";
 import { AmbulanceIcon, AmbulanceSideIcon, NoAmbulanceIcon } from "./icons";
 // import { FaPlus } from "react-icons/fa";
 
+
+// handle Help Button
+const handleHelpVideo = () => {
+  const phoneNumber = "+1234556778";
+  const userChoice = window.confirm("Do you want to call or send an SMS?");
+
+  if (userChoice) {
+    window.location.href = `tel:${phoneNumber}`;
+  } else {
+    window.location.href = `sms:${phoneNumber}`;
+  }
+  const telUrl = `tel:${phoneNumber}`;
+  window.location.href = telUrl;
+};
+
 const StyledButtonAlignment = styled(Typography)`
   margin-top: 30px;
   position: absolute;
@@ -44,7 +59,7 @@ const CallHelpButton = styled.button`
 const BottomCenterButtonContainer = styled.div`
   position: fixed;
   top: 20px;
-  
+
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
@@ -127,17 +142,24 @@ const CallHelpButtonComponent = ({ onClick }) => {
     openCancelNestedModal();
   };
 
+  const handleConfirmVideo = () => {
+    handleHelpVideo();
+    handleConfirm();
+  }
+
   return (
     <BottomCenterButtonContainer>
       <CallHelpButton
         id="top-right-button"
         primary
         onClick={openModal}
-        active={isButtonClicked}>
+        active={isButtonClicked}
+      >
         <Typography
           fontSize={"48px"}
           fontWeight="700"
-          style={{ display: "flex", alignItems: "center", padding: "0 20px" }}>
+          style={{ display: "flex", alignItems: "center", padding: "0 20px" }}
+        >
           <TelephoneIcon size={60} />
           <div style={{ paddingLeft: "10px" }}>CALL SUSAN</div>
         </Typography>
@@ -166,7 +188,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1000,
           },
-        }}>
+        }}
+      >
         <Typography
           style={{ paddingLeft: "60px" }}
           fontSize={"55px"}
@@ -174,7 +197,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
           mb={3}
           color="#2D3E5F"
           display="flex"
-          alignItems="center">
+          alignItems="center"
+        >
           Help request
           <div style={{ paddingLeft: "20px" }}>
             <AmbulanceSideIcon size={120} />
@@ -184,11 +208,12 @@ const CallHelpButtonComponent = ({ onClick }) => {
           style={{ paddingLeft: "60px" }}
           fontSize={"48px"}
           fontWeight="500"
-          color="#2D3E5F">
+          color="#2D3E5F"
+        >
           Call for assistance
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
-          <ModalButton onClick={handleConfirm}>Yes, I need help</ModalButton>
+          <ModalButton onClick={handleConfirmVideo}>Yes, I need help</ModalButton>
           <ModalButton
             style={{
               background: "none",
@@ -196,7 +221,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
               borderColor: "#2d3e5f",
               borderRadius: "25px",
             }}
-            onClick={handleCancel}>
+            onClick={handleCancel}
+          >
             Cancel request
           </ModalButton>
         </StyledButtonAlignment>
@@ -225,7 +251,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1000,
           },
-        }}>
+        }}
+      >
         <Typography
           style={{ paddingLeft: "60px" }}
           fontSize={"55px"}
@@ -233,7 +260,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
           mb={3}
           color="#2D3E5F"
           display="flex"
-          alignItems="center">
+          alignItems="center"
+        >
           Help request sent
           <div style={{ paddingLeft: "20px" }}>
             <AmbulanceIcon size={120} />
@@ -244,7 +272,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontSize={"48px"}
           fontWeight="500"
           mb={1}
-          color="#2D3E5F">
+          color="#2D3E5F"
+        >
           Help is on the way,
         </Typography>
         <Typography
@@ -252,7 +281,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontSize={"48px"}
           fontWeight="500"
           mb={6}
-          color="#2D3E5F">
+          color="#2D3E5F"
+        >
           your family has been notified.
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
@@ -263,7 +293,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
               borderColor: "#2d3e5f",
               borderRadius: "25px",
             }}
-            onClick={closeNestedModal}>
+            onClick={closeNestedModal}
+          >
             Press to close
           </ModalButton>
         </StyledButtonAlignment>
@@ -292,7 +323,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1000,
           },
-        }}>
+        }}
+      >
         <Typography
           style={{ paddingLeft: "60px" }}
           fontSize={"55px"}
@@ -300,7 +332,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
           mb={3}
           color="#2D3E5F"
           display="flex"
-          alignItems="center">
+          alignItems="center"
+        >
           Help request cancelled
           <div style={{ paddingLeft: "20px" }}>
             <NoAmbulanceIcon size={120} />
@@ -310,7 +343,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
           style={{ paddingLeft: "60px" }}
           fontSize={"48px"}
           fontWeight="550"
-          color="#2D3E5F">
+          color="#2D3E5F"
+        >
           Your request to call is cancelled.
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
@@ -321,7 +355,8 @@ const CallHelpButtonComponent = ({ onClick }) => {
               borderColor: "#2d3e5f",
               borderRadius: "25px",
             }}
-            onClick={closeCancelNestedModal}>
+            onClick={closeCancelNestedModal}
+          >
             Press to close
           </ModalButton>
         </StyledButtonAlignment>

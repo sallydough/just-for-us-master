@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import Slider from "react-slick";
 import axios from "axios";
+import { FaUserAlt } from "react-icons/fa";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import styled from "styled-components";
 import "./activities.css";
@@ -125,7 +126,8 @@ const Activities = React.forwardRef((props, ref) => {
                   color="white"
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   {/* Render your event data here */}
-                 
+                
+<FaUserAlt size={130} color="white" className="nav-icon" />
                   <h1 >{event.item}</h1>
                    <p color="white" className="card-name">
                     {event.name}

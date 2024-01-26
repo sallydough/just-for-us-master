@@ -751,6 +751,7 @@ const Home = () => {
 
   return (
     <>
+    <section id="home">
       <HomeContainer disableHover={disableHover}>
         {/* Card Carousel */}
         <CarouselWrapper
@@ -804,6 +805,7 @@ const Home = () => {
         {/* ... add more components if needed */}
       </CarouselWrapper>
       <CallHelpButtonComponent />
+      </section>
     </>
   );
 };

@@ -1,6 +1,6 @@
-
 .container {
-  max-width: 400px;
+  max-width: 600px;
+
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -14,7 +14,7 @@
 }
 
 .text {
-  font-size: 24px;
+  font-size: 60px;
   font-weight: bold;
 }
 
@@ -35,7 +35,8 @@
 
 input {
   width: 100%;
-  padding: 10px;
+  font-size: large;
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;

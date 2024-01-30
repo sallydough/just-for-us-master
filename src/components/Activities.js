@@ -303,7 +303,7 @@ const Activities = React.forwardRef((props, ref) => {
             infinite
             lazyLoad
             speed={300}
-            slidesToShow={1}
+            slidesToShow={3}
             centerMode
             centerPadding={0}>
             {itemsArray.length > 0 && (

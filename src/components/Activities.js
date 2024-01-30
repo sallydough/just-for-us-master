@@ -329,9 +329,10 @@ const Activities = React.forwardRef((props, ref) => {
       infinite: true,
       lazyLoad: true,
       speed: 300,
-      slidesToShow: 3,
+      slidesToShow: 1,
       centerMode: true,
       centerPadding: 0,
+      dots: true,
       nextArrow: <CustomNextArrow />,
       prevArrow: <CustomPrevArrow />,
       beforeChange: (current, next) => setCardIndex(next),
@@ -371,9 +372,10 @@ const Activities = React.forwardRef((props, ref) => {
             infinite
             lazyLoad
             speed={300}
-            slidesToShow={3}
+            slidesToShow={1}
             centerMode
-            centerPadding={0}>
+            centerPadding={0}
+            dots= {true}>
             {itemsArray.length > 0 && (
               <div className="items-container">
                 {setItemsArray.map((item, index) => (

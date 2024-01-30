@@ -222,15 +222,15 @@ svg.arrow-down {
   margin-left: 0.8%;
 }
 .modal-content {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #c85d5d;
+  border: 1px solid #453c3c;
   border-radius: 5px;
 }
 
 .modal-header {
-  background-color: #007bff;
+  background-color: #0066ff;
   color: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #aa4a4a;
 }
 
 .modal-title {
@@ -242,15 +242,15 @@ svg.arrow-down {
 }
 
 .modal-footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #e56969;
   padding: 10px;
 }
 
 /* Countdown Styles */
 .countdown-container {
   text-align: center;
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 50px;
+  margin-top: 40px;
 }
 
 .countdown-label {
@@ -260,6 +260,6 @@ svg.arrow-down {
 
 .countdown-value {
   font-size: 24px;
-  color: #007bff;
+  color: #2200ff;
   font-weight: bold;
 }

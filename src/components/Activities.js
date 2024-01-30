@@ -161,6 +161,7 @@ const Activities = React.forwardRef((props, ref) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [events, setEvents] = useState([]);
+  const [itemsArray, setItemsArray] = useState([]);
 
   // Function to navigate to Zoom link on card click
   const navigateToZoomLink = (link) => {
@@ -191,11 +192,11 @@ const Activities = React.forwardRef((props, ref) => {
 
         // Update the eventData variable inside the try block
         eventData = signUpData
-          .filter((item) => {
+          .filter((items) => {
             const lowerEnteredName =
               enteredName && enteredName.trim().toLowerCase();
-            const lowerFirstName = item.firstname.trim().toLowerCase();
-            const lowerLastName = item.lastname.trim().toLowerCase();
+            const lowerFirstName = items.firstname.trim().toLowerCase();
+            const lowerLastName = items.lastname.trim().toLowerCase();
 
             console.log("Entered Name:", lowerEnteredName);
             console.log("Lower First Name:", lowerFirstName);
@@ -210,18 +211,20 @@ const Activities = React.forwardRef((props, ref) => {
             return matchFirstName || matchLastName;
           })
 
-          .map((item) => ({
-            id: item.signupid,
-            name: `${item.firstname} ${item.lastname}`,
-            item: item.item,
-            startDateString: item.startdatestring,
+          .map((items) => ({
+            id: items.signupid,
+            name: `${items.firstname} ${items.lastname}`,
+            items: items.item,
+            startDateString: items.startdatestring,
             zoomLink:
-              item.location === "Online"
+              items.location === "Online"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
                 : null,
           }));
 
         console.log("Filtered Events:", eventData);
+        // Update itemsArray when events state changes
+        setItemsArray(eventData.map((event) => event.items));
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -264,7 +267,7 @@ const Activities = React.forwardRef((props, ref) => {
                   key={event.id}
                   onClick={() => navigateToZoomLink(event.zoomLink)}
                   className={idx === 0 ? "slide activeSlide" : "slide"}>
-                  <h1>{event.item}</h1>
+                  <h1>{event.items}</h1>
                   <p className="card-name">{event.name}</p>
                   <p>{event.startDateString}</p>
                 </div>
@@ -276,6 +279,17 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+       {/* Render the itemsArray if needed */}
+       {itemsArray.length > 0 && (
+        <div>
+          <h2>Items Array:</h2>
+          <ul>
+            {itemsArray.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 });

@@ -267,7 +267,7 @@ const Activities = React.forwardRef((props, ref) => {
           onClick();
         }}
         className="next"
-        style={{ right: -100 }}
+  
       >
         <FaChevronRight />
         {/* Customize the arrow component as needed */}
@@ -284,7 +284,7 @@ const Activities = React.forwardRef((props, ref) => {
           onClick();
         }}
         className="prev"
-        style={{ left: -100 }}
+        
       >
         <FaChevronLeft />
         {/* Customize the arrow component as needed */}
@@ -309,14 +309,8 @@ const Activities = React.forwardRef((props, ref) => {
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
           <div className="slider">
-            <Slider
-              infinite
-              lazyLoad
-              speed={300}
-              slidesToShow={3}
-              centerMode
-              centerPadding={0}>
-              {events.map((event, idx) => (
+            <Slider  {...slidesSettings}>
+             {events.map((event, idx) => (
                <Card
                  key={event.id}
                  item={event.items}
@@ -338,6 +332,7 @@ const Activities = React.forwardRef((props, ref) => {
             </Slider>
           </div>
           <div className="prompt">
+  
             {/* Display other properties if needed */}
           </div>
         </div>

@@ -296,22 +296,33 @@ const Activities = React.forwardRef((props, ref) => {
         </div>
       </div>
       {/* Render the itemsArray as cards */}
-      {itemsArray.length > 0 && (
-        <div className="items-container">
-          {setItemsArray.map((item, index) => (
-            <Card
-              key={item.id}
-              item={item.items}
-              name={item.name}
-              startDateString={item.startDateString}
-              zoomLink={item.zoomLink}
-              onClick={() => navigateToZoomLink(item.zoomLink)}
-              className={index === 3 ? "slide activeSlide" : "slide"}
-            />
-          ))}
-      
+      <div className="slider-call-1">
+        <div className="slider">
+          <Slider
+            infinite
+            lazyLoad
+            speed={300}
+            slidesToShow={1}
+            centerMode
+            centerPadding={0}>
+            {itemsArray.length > 0 && (
+              <div className="items-container">
+                {setItemsArray.map((item, index) => (
+                  <Card
+                    key={item.id}
+                    item={item.items}
+                    name={item.name}
+                    startDateString={item.startDateString}
+                    zoomLink={item.zoomLink}
+                    onClick={() => navigateToZoomLink(item.zoomLink)}
+                    className={index === 3 ? "slide activeSlide" : "slide"}
+                  />
+                ))}
+              </div>
+            )}
+          </Slider>
         </div>
-      )}
+      </div>
     </>
   );
 });

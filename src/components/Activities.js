@@ -298,7 +298,7 @@ const Activities = React.forwardRef((props, ref) => {
       {/* Render the itemsArray as cards */}
       {itemsArray.length > 0 && (
         <div className="items-container">
-          {itemsArray.map((item, index) => (
+          {setItemsArray.map((item, index) => (
             <Card
               key={item.id}
               item={item.items}

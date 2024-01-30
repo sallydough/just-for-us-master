@@ -146,65 +146,23 @@
 // });
 
 // export default Activities;
-// Activities.js
 
+// Import necessary dependencies
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
 
+// ... (previous imports)
+
+// Define the Activities component
 const Activities = React.forwardRef((props, ref) => {
   const { enteredName } = props;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.signupgenius.com/v2/k/signups/report/filled/47293846/?user_key=UmNrVWhyYWwrVGhtQmdXeVpweTBZZz09"
-        );
-
-        if (!response.data.success) {
-          throw new Error("Failed to retrieve signed-up activities.");
-        }
-
-        const signUpData = response.data.data.signup;
-
-        const userEvents = signUpData.filter(
-          (item) =>
-            item.firstname.trim().toLowerCase() ===
-              enteredName.trim().toLowerCase() ||
-            item.lastname.trim().toLowerCase() ===
-              enteredName.trim().toLowerCase()
-        );
-
-        const eventData = userEvents.map((item) => ({
-          id: item.signupid,
-          name: `${item.firstname} ${item.lastname}`,
-          item: item.item,
-          startDateString: item.startdatestring,
-          zoomLink:
-            item.location === "Online"
-              ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
-              : null,
-        }));
-
-        setEvents(eventData);
-      } catch (error) {
-        console.error("Error fetching signed-up activities:", error);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (enteredName) {
-      fetchEvents();
-    }
-  }, [enteredName]);
-
+  // Function to navigate to Zoom link on card click
   const navigateToZoomLink = (link) => {
     if (link) {
       window.location.replace(link);
@@ -213,6 +171,73 @@ const Activities = React.forwardRef((props, ref) => {
     }
   };
 
+  // Fetch events based on the enteredName
+  useEffect(() => {
+    const fetchEvents = async () => {
+      let eventData = []; // Declare eventData outside the try block
+
+      try {
+        const response = await axios.get(
+          "https://api.signupgenius.com/v2/k/signups/report/filled/47293846/?user_key=UmNrVWhyYWwrVGhtQmdXeVpweTBZZz09"
+        );
+
+        console.log("API Response:", response);
+
+        if (!response.data.success) {
+          throw new Error("Failed to retrieve signed-up activities.");
+        }
+
+        const signUpData = response.data.data.signup;
+
+        // Update the eventData variable inside the try block
+        eventData = signUpData
+          .filter((item) => {
+            const lowerEnteredName =
+              enteredName && enteredName.trim().toLowerCase();
+            const lowerFirstName = item.firstname.trim().toLowerCase();
+            const lowerLastName = item.lastname.trim().toLowerCase();
+
+            console.log("Entered Name:", lowerEnteredName);
+            console.log("Lower First Name:", lowerFirstName);
+            console.log("Lower Last Name:", lowerLastName);
+
+            const matchFirstName = lowerFirstName.includes(lowerEnteredName);
+            const matchLastName = lowerLastName.includes(lowerEnteredName);
+
+            console.log("Match First Name:", matchFirstName);
+            console.log("Match Last Name:", matchLastName);
+
+            return matchFirstName || matchLastName;
+          })
+
+          .map((item) => ({
+            id: item.signupid,
+            name: `${item.firstname} ${item.lastname}`,
+            item: item.item,
+            startDateString: item.startdatestring,
+            zoomLink:
+              item.location === "Online"
+                ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
+                : null,
+          }));
+
+        console.log("Filtered Events:", eventData);
+      } catch (error) {
+        console.error("Error fetching signed-up activities:", error.message);
+        setError(
+          "Failed to retrieve signed-up activities. Please try again later."
+        );
+      } finally {
+        // Set the events state using setEvents
+        setEvents(eventData);
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, [enteredName]);
+
+  // Render the component based on loading and error states
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -221,6 +246,7 @@ const Activities = React.forwardRef((props, ref) => {
     return <p>Error: {error.message}</p>;
   }
 
+  // Render the Slider component with the filtered activities
   return (
     <>
       <div ref={ref} id="activities" className="settings">
@@ -230,7 +256,7 @@ const Activities = React.forwardRef((props, ref) => {
               infinite
               lazyLoad
               speed={300}
-              slidesToShow={3}
+              slidesToShow={1}
               centerMode
               centerPadding={0}>
               {events.map((event, idx) => (
@@ -254,4 +280,5 @@ const Activities = React.forwardRef((props, ref) => {
   );
 });
 
+// Export the Activities component
 export default Activities;

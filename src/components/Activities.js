@@ -153,14 +153,38 @@ import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
 // import { Modal, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
+import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
+import styled from "styled-components";
+import "./activities.css";
 
-// ... (previous imports)
+const CustomArrowButton = styled.div`
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  &:active {
+    transform: translateY(-50%), scale(0.95);
+  }
+`;
 
 // Define a separate Card component for rendering items
-const Card = ({ item, name, startDateString, zoomLink, onClick, className }) => (
+const Card = ({
+  item,
+  name,
+  startDateString,
+  zoomLink,
+  onClick,
+  className,
+}) => (
   <div onClick={onClick} className={`card ${className}`}>
     <h1>{item}</h1>
     <p className="card-name">{name}</p>
@@ -259,7 +283,6 @@ const Activities = React.forwardRef((props, ref) => {
 
         console.log("Filtered Events:", eventData);
 
-        
         // const upcomingEvent = eventData.find((event) => {
         //   const eventStartDate = new Date(event.startDateString);
         //   const currentDate = new Date();
@@ -292,110 +315,101 @@ const Activities = React.forwardRef((props, ref) => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-    
-  
-    const CustomNextArrow = ({ onClick }) => (
-      <div
-        onClick={() => {
-          setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
-          onClick();
-        }}
-        className="next"
-  
-      >
-        <FaChevronRight />
-        {/* Customize the arrow component as needed */}
-      </div>
-    );
-  
-    const CustomPrevArrow = ({ onClick }) => (
-      <div
-        onClick={() => {
-          setCardIndex(
-            (prevIndex) =>
-              (prevIndex - 1 + events.length) % events.length
-          );
-          onClick();
-        }}
-        className="prev"
-        
-      >
-        <FaChevronLeft />
-        {/* Customize the arrow component as needed */}
-      </div>
-    );
-  
-    const slidesSettings = {
-      infinite: true,
-      lazyLoad: true,
-      speed: 300,
-      slidesToShow: 1,
-      centerMode: true,
-      centerPadding: 0,
-      dots: true,
-      nextArrow: <CustomNextArrow />,
-      prevArrow: <CustomPrevArrow />,
-      beforeChange: (current, next) => setCardIndex(next),
-    };
-  
+
+  const CustomNextArrow = ({ onClick }) => (
+    <CustomArrowButton
+      onClick={() => {
+        setCardIndex((prevIndex) => (prevIndex + 1) % itemsArray.length);
+        onClick();
+      }}
+      style={{ right: -100 }}>
+      <ChevronRightIcon />
+    </CustomArrowButton>
+  );
+
+  const CustomPrevArrow = ({ onClick }) => (
+    <CustomArrowButton
+      onClick={() => {
+        setCardIndex(
+          (prevIndex) => (prevIndex - 1 + itemsArray.length) % itemsArray.length
+        );
+        onClick();
+      }}
+      style={{ left: -100 }}>
+      <ChevronLeftIcon />
+    </CustomArrowButton>
+  );
+
+  const slidesSettings = {
+    infinite: true,
+    lazyLoad: true,
+    speed: 300,
+    slidesToShow: 1,
+    centerMode: true,
+    centerPadding: 0,
+    dots: true,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+    beforeChange: (current, next) => setCardIndex(next),
+  };
+
   // Render the Slider component with the filtered activities
   return (
     <>
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
           <div className="slider">
-            <Slider  {...slidesSettings}>
-             {events.map((event, idx) => (
-               <Card
-                 key={event.id}
-                 item={event.items}
-                 name={event.name}
-                 startDateString={event.startDateString}
-                 zoomLink={event.zoomLink}
-                 onClick={() => navigateToZoomLink(event.zoomLink)}
-                 className={idx === 0 ? "slide activeSlide" : "slide"}
-                 />
-               ))}
+            <Slider {...slidesSettings}>
+              {events.map((event, idx) => (
+                <Card
+                  key={event.id}
+                  item={event.items}
+                  name={event.name}
+                  startDateString={event.startDateString}
+                  zoomLink={event.zoomLink}
+                  onClick={() => navigateToZoomLink(event.zoomLink)}
+                  className={idx === 0 ? "slide activeSlide" : "slide"}
+                />
+              ))}
             </Slider>
           </div>
           <div className="prompt">
-  
             {/* Display other properties if needed */}
           </div>
         </div>
       </div>
       {/* Render the itemsArray as cards */}
       <div ref={ref} id="activities" className="settings">
-      <div className="slider-call-1">
-        <div className="slider">
-          <Slider
-            infinite
-            lazyLoad
-            speed={300}
-            slidesToShow={1}
-            centerMode
-            centerPadding={0}
-            dots= {true}>
-            {itemsArray.length > 0 && (
-              <div className="items-container">
-                {setItemsArray.map((item, index) => (
-                  <Card
-                    key={item.id}
-                    item={item.items}
-                    name={item.name}
-                    startDateString={item.startDateString}
-                    zoomLink={item.zoomLink}
-                    onClick={() => navigateToZoomLink(item.zoomLink)}
-                    className={index === 0 ? "slide activeSlide" : "slide"}
-                  />
-                ))}
-              </div>
-            )}
-          </Slider>
+        <div className="slider-call-1">
+          <div className="slider">
+            <Slider
+              infinite
+              lazyLoad
+              speed={300}
+              slidesToShow={1}
+              centerMode
+              centerPadding={0}
+              dots={true}>
+              {itemsArray.length > 0 && (
+                <div className="items-container">
+                  {setItemsArray.map((item, index) => (
+                    <Card
+                      key={item.id}
+                      item={item.items}
+                      name={item.name}
+                      startDateString={item.startDateString}
+                      zoomLink={item.zoomLink}
+                      onClick={() => navigateToZoomLink(item.zoomLink)}
+                      className={index === 0 ? "slide activeSlide" : "slide"}
+                    />
+                  ))}
+                </div>
+              )}
+            </Slider>
+          </div>
         </div>
       </div>
-    </div>
-    {/* {upcomingEvent && (
+      {/* {upcomingEvent && (
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Upcoming Event Countdown</Modal.Title>

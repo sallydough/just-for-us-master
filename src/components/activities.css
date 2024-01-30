@@ -150,11 +150,13 @@ svg.arrow-down {
 .next {
   right: -8%;
   top: 39%;
+  size: 50px;
 }
 
 .prev {
   left: -8%;
   top: 40%;
+  size: 50px;
 }
 
 /* Moving the prompt on bottom of contact carousel */
@@ -170,7 +172,7 @@ svg.arrow-down {
 
 /* contacts.css or your custom style sheet */
 .custom-modal {
-  background-color: goldenrod;
+  background-color: rgb(246, 226, 177);
   border: 1px solid #ccc;
   padding: 100px;
   width: 900px;
@@ -222,7 +224,7 @@ svg.arrow-down {
   margin-left: 0.8%;
 }
 .modal-content {
-  background-color: #c85d5d;
+  background-color: #68c85d;
   border: 1px solid #453c3c;
   border-radius: 5px;
 }
@@ -259,7 +261,7 @@ svg.arrow-down {
 }
 
 .countdown-value {
-  font-size: 24px;
+  font-size: 80px;
   color: #2200ff;
   font-weight: bold;
 }

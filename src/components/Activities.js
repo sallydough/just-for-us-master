@@ -266,7 +266,7 @@ const Activities = React.forwardRef((props, ref) => {
           setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
           onClick();
         }}
-        className="arrow-icon"
+        className="next"
         style={{ right: -100 }}
       >
         <FaChevronRight />
@@ -283,7 +283,7 @@ const Activities = React.forwardRef((props, ref) => {
           );
           onClick();
         }}
-        className="arrow-icon"
+        className="prev"
         style={{ left: -100 }}
       >
         <FaChevronLeft />

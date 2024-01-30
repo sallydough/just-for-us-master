@@ -155,6 +155,15 @@ import "./activities.css";
 
 // ... (previous imports)
 
+// Define a separate Card component for rendering items
+const Card = ({ item, name, startDateString, zoomLink, onClick }) => (
+  <div onClick={onClick} className="card">
+    <h1>{item}</h1>
+    <p className="card-name">{name}</p>
+    <p>{startDateString}</p>
+  </div>
+);
+
 // Define the Activities component
 const Activities = React.forwardRef((props, ref) => {
   const { enteredName } = props;
@@ -223,8 +232,6 @@ const Activities = React.forwardRef((props, ref) => {
           }));
 
         console.log("Filtered Events:", eventData);
-        // Update itemsArray when events state changes
-        setItemsArray(eventData.map((event) => event.items));
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -263,14 +270,23 @@ const Activities = React.forwardRef((props, ref) => {
               centerMode
               centerPadding={0}>
               {events.map((event, idx) => (
-                <div
-                  key={event.id}
-                  onClick={() => navigateToZoomLink(event.zoomLink)}
-                  className={idx === 0 ? "slide activeSlide" : "slide"}>
-                  <h1>{event.items}</h1>
-                  <p className="card-name">{event.name}</p>
-                  <p>{event.startDateString}</p>
-                </div>
+               <Card
+                 key={event.id}
+                 item={event.items}
+                 name={event.name}
+                 startDateString={event.startDateString}
+                 zoomLink={event.zoomLink}
+                 onClick={() => navigateToZoomLink(event.zoomLink)}
+                 className={idx === 0 ? "slide activeSlide" : "slide"}
+/>
+                // <div
+                //   key={event.id}
+                //   onClick={() => navigateToZoomLink(event.zoomLink)}
+                //   className={idx === 0 ? "slide activeSlide" : "slide"}>
+                //   <h1>{event.items}</h1>
+                //   <p className="card-name">{event.name}</p>
+                //   <p>{event.startDateString}</p>
+                // </div>
               ))}
             </Slider>
           </div>
@@ -279,15 +295,21 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-       {/* Render the itemsArray if needed */}
-       {itemsArray.length > 0 && (
-        <div>
-          <h2>Items Array:</h2>
-          <ul>
-            {itemsArray.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+      {/* Render the itemsArray as cards */}
+      {itemsArray.length > 0 && (
+        <div className="items-container">
+          {itemsArray.map((item, index) => (
+            <Card
+              key={item.id}
+              item={item.items}
+              name={item.name}
+              startDateString={item.startDateString}
+              zoomLink={item.zoomLink}
+              onClick={() => navigateToZoomLink(item.zoomLink)}
+              className={index === 3 ? "slide activeSlide" : "slide"}
+            />
+          ))}
+      
         </div>
       )}
     </>

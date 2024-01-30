@@ -344,7 +344,7 @@ const Activities = React.forwardRef((props, ref) => {
     infinite: true,
     lazyLoad: true,
     speed: 300,
-    slidesToShow: 1,
+    slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
     dots: true,
@@ -386,7 +386,7 @@ const Activities = React.forwardRef((props, ref) => {
               infinite
               lazyLoad
               speed={300}
-              slidesToShow={1}
+              slidesToShow={3}
               centerMode
               centerPadding={0}
               dots={true}>

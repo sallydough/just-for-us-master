@@ -296,6 +296,7 @@ const Activities = React.forwardRef((props, ref) => {
         </div>
       </div>
       {/* Render the itemsArray as cards */}
+      <div ref={ref} id="activities" className="settings">
       <div className="slider-call-1">
         <div className="slider">
           <Slider
@@ -315,7 +316,7 @@ const Activities = React.forwardRef((props, ref) => {
                     startDateString={item.startDateString}
                     zoomLink={item.zoomLink}
                     onClick={() => navigateToZoomLink(item.zoomLink)}
-                    className={index === 3 ? "slide activeSlide" : "slide"}
+                    className={index === 0 ? "slide activeSlide" : "slide"}
                   />
                 ))}
               </div>
@@ -323,6 +324,7 @@ const Activities = React.forwardRef((props, ref) => {
           </Slider>
         </div>
       </div>
+    </div>
     </>
   );
 });

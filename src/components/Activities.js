@@ -152,6 +152,7 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 
 // ... (previous imports)
@@ -265,8 +266,10 @@ const Activities = React.forwardRef((props, ref) => {
           setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
           onClick();
         }}
+        className="arrow-icon"
         style={{ right: -100 }}
       >
+        <FaChevronRight />
         {/* Customize the arrow component as needed */}
       </div>
     );
@@ -280,8 +283,10 @@ const Activities = React.forwardRef((props, ref) => {
           );
           onClick();
         }}
+        className="arrow-icon"
         style={{ left: -100 }}
       >
+        <FaChevronLeft />
         {/* Customize the arrow component as needed */}
       </div>
     );
@@ -308,7 +313,7 @@ const Activities = React.forwardRef((props, ref) => {
               infinite
               lazyLoad
               speed={300}
-              slidesToShow={1}
+              slidesToShow={3}
               centerMode
               centerPadding={0}>
               {events.map((event, idx) => (

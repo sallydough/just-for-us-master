@@ -152,7 +152,7 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
-import { Modal, Button } from "react-bootstrap";
+// import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
@@ -176,8 +176,8 @@ const Activities = React.forwardRef((props, ref) => {
   const [events, setEvents] = useState([]);
   const [itemsArray, setItemsArray] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const [upcomingEvent, setUpcomingEvent] = useState(null);
+  // const [showModal, setShowModal] = useState(false);
+  // const [upcomingEvent, setUpcomingEvent] = useState(null);
 
   // Function to navigate to Zoom link on card click
   const navigateToZoomLink = (link) => {
@@ -188,25 +188,25 @@ const Activities = React.forwardRef((props, ref) => {
     }
   };
 
-  // Function to show the modal with countdown
-  const showCountdownModal = (event) => {
-    setUpcomingEvent(event);
-    setShowModal(true);
-  };
+  // // Function to show the modal with countdown
+  // const showCountdownModal = (event) => {
+  //   setUpcomingEvent(event);
+  //   setShowModal(true);
+  // };
 
-  // Helper function to calculate time until the event
-  const calculateTimeUntilEvent = (event) => {
-    const eventStartDate = new Date(event.startDateString);
-    const currentDate = new Date();
-    const timeUntilEvent = eventStartDate - currentDate;
+  // // Helper function to calculate time until the event
+  // const calculateTimeUntilEvent = (event) => {
+  //   const eventStartDate = new Date(event.startDateString);
+  //   const currentDate = new Date();
+  //   const timeUntilEvent = eventStartDate - currentDate;
 
-    const seconds = Math.floor((timeUntilEvent / 1000) % 60);
-    const minutes = Math.floor((timeUntilEvent / 1000 / 60) % 60);
-    const hours = Math.floor((timeUntilEvent / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(timeUntilEvent / (1000 * 60 * 60 * 24));
+  //   const seconds = Math.floor((timeUntilEvent / 1000) % 60);
+  //   const minutes = Math.floor((timeUntilEvent / 1000 / 60) % 60);
+  //   const hours = Math.floor((timeUntilEvent / (1000 * 60 * 60)) % 24);
+  //   const days = Math.floor(timeUntilEvent / (1000 * 60 * 60 * 24));
 
-    return `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-  };
+  //   return `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+  // };
   // Fetch events based on the enteredName
   useEffect(() => {
     const fetchEvents = async () => {
@@ -260,15 +260,15 @@ const Activities = React.forwardRef((props, ref) => {
         console.log("Filtered Events:", eventData);
 
         
-        const upcomingEvent = eventData.find((event) => {
-          const eventStartDate = new Date(event.startDateString);
-          const currentDate = new Date();
-          return eventStartDate > currentDate;
-        });
+        // const upcomingEvent = eventData.find((event) => {
+        //   const eventStartDate = new Date(event.startDateString);
+        //   const currentDate = new Date();
+        //   return eventStartDate > currentDate;
+        // });
 
-        if (upcomingEvent) {
-          showCountdownModal(upcomingEvent);
-        }
+        // if (upcomingEvent) {
+        //   showCountdownModal(upcomingEvent);
+        // }
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -395,7 +395,7 @@ const Activities = React.forwardRef((props, ref) => {
         </div>
       </div>
     </div>
-    {upcomingEvent && (
+    {/* {upcomingEvent && (
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Upcoming Event Countdown</Modal.Title>
@@ -409,8 +409,8 @@ const Activities = React.forwardRef((props, ref) => {
               Close
             </Button>
           </Modal.Footer>
-        </Modal>
-      )}
+        </Modal> */}
+      {/* )} */}
     </>
   );
 });

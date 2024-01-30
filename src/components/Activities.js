@@ -153,6 +153,7 @@ import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
 
+
 // ... (previous imports)
 
 // Define a separate Card component for rendering items
@@ -171,6 +172,7 @@ const Activities = React.forwardRef((props, ref) => {
   const [error, setError] = useState(null);
   const [events, setEvents] = useState([]);
   const [itemsArray, setItemsArray] = useState([]);
+  const [cardIndex, setCardIndex] = useState(0);
 
   // Function to navigate to Zoom link on card click
   const navigateToZoomLink = (link) => {
@@ -255,7 +257,47 @@ const Activities = React.forwardRef((props, ref) => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-
+    
+  
+    const CustomNextArrow = ({ onClick }) => (
+      <div
+        onClick={() => {
+          setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
+          onClick();
+        }}
+        style={{ right: -100 }}
+      >
+        {/* Customize the arrow component as needed */}
+      </div>
+    );
+  
+    const CustomPrevArrow = ({ onClick }) => (
+      <div
+        onClick={() => {
+          setCardIndex(
+            (prevIndex) =>
+              (prevIndex - 1 + events.length) % events.length
+          );
+          onClick();
+        }}
+        style={{ left: -100 }}
+      >
+        {/* Customize the arrow component as needed */}
+      </div>
+    );
+  
+    const slidesSettings = {
+      infinite: true,
+      lazyLoad: true,
+      speed: 300,
+      slidesToShow: 3,
+      centerMode: true,
+      centerPadding: 0,
+      nextArrow: <CustomNextArrow />,
+      prevArrow: <CustomPrevArrow />,
+      beforeChange: (current, next) => setCardIndex(next),
+    };
+  
   // Render the Slider component with the filtered activities
   return (
     <>

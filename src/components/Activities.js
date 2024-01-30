@@ -156,8 +156,8 @@ import "./activities.css";
 // ... (previous imports)
 
 // Define a separate Card component for rendering items
-const Card = ({ item, name, startDateString, zoomLink, onClick }) => (
-  <div onClick={onClick} className="card">
+const Card = ({ item, name, startDateString, zoomLink, onClick, className }) => (
+  <div onClick={onClick} className={`card ${className}`}>
     <h1>{item}</h1>
     <p className="card-name">{name}</p>
     <p>{startDateString}</p>

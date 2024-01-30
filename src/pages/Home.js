@@ -706,7 +706,7 @@ const CarouselDivBox = styled.div`
   justify-content: center;
 `;
 
-const Home = () => {
+const Home = ({ enteredName }) => {
   const sliderRef = useRef(null);
   const activitiesRef = useRef(null);
   const tvRef = useRef(null);
@@ -752,6 +752,9 @@ const Home = () => {
   return (
     <>
       <section id="home">
+        {/* Display Hello and the logged-in person's name */}
+        <div className="welcome-message">Logged in as: {enteredName}</div>
+
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper
@@ -798,7 +801,9 @@ const Home = () => {
           onClick={() => handleCarouselChange("componentData")}
           onTouchStart={() => handleCarouselChange("componentData")}>
           {centerCardIndex === 0 && <Television ref={tvRef} />}
-          {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
+          {centerCardIndex === 1 && (
+            <Activities ref={activitiesRef} enteredName={enteredName} />
+          )}
           {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
           {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
           {centerCardIndex === 5 && <Lights ref={lightsRef} />}

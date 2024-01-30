@@ -319,16 +319,8 @@ const Activities = React.forwardRef((props, ref) => {
                  zoomLink={event.zoomLink}
                  onClick={() => navigateToZoomLink(event.zoomLink)}
                  className={idx === 0 ? "slide activeSlide" : "slide"}
-/>
-                // <div
-                //   key={event.id}
-                //   onClick={() => navigateToZoomLink(event.zoomLink)}
-                //   className={idx === 0 ? "slide activeSlide" : "slide"}>
-                //   <h1>{event.items}</h1>
-                //   <p className="card-name">{event.name}</p>
-                //   <p>{event.startDateString}</p>
-                // </div>
-              ))}
+                 />
+               ))}
             </Slider>
           </div>
           <div className="prompt">

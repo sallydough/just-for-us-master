@@ -223,8 +223,6 @@ const Activities = React.forwardRef((props, ref) => {
           }));
 
         console.log("Filtered Events:", eventData);
-        // Update itemsArray when events state changes
-        setItemsArray(eventData.map((event) => event.items));
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -281,11 +279,15 @@ const Activities = React.forwardRef((props, ref) => {
       </div>
        {/* Render the itemsArray if needed */}
        {itemsArray.length > 0 && (
-        <div>
-          <h2>Items Array:</h2>
+        <div
+        key={itemsArray.id}
+                  onClick={() => navigateToZoomLink(itemsArray.zoomLink)}
+                  className={id === 3 ? "slide activeSlide" : "slide"} 
+        >
+          {/* <h2>Items Array:</h2> */}
           <ul>
             {itemsArray.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li className="card-name" key={index}>{item}</li>
             ))}
           </ul>
         </div>

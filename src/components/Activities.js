@@ -152,6 +152,8 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
+import { Modal, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 
@@ -174,6 +176,8 @@ const Activities = React.forwardRef((props, ref) => {
   const [events, setEvents] = useState([]);
   const [itemsArray, setItemsArray] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [upcomingEvent, setUpcomingEvent] = useState(null);
 
   // Function to navigate to Zoom link on card click
   const navigateToZoomLink = (link) => {
@@ -184,6 +188,25 @@ const Activities = React.forwardRef((props, ref) => {
     }
   };
 
+  // Function to show the modal with countdown
+  const showCountdownModal = (event) => {
+    setUpcomingEvent(event);
+    setShowModal(true);
+  };
+
+  // Helper function to calculate time until the event
+  const calculateTimeUntilEvent = (event) => {
+    const eventStartDate = new Date(event.startDateString);
+    const currentDate = new Date();
+    const timeUntilEvent = eventStartDate - currentDate;
+
+    const seconds = Math.floor((timeUntilEvent / 1000) % 60);
+    const minutes = Math.floor((timeUntilEvent / 1000 / 60) % 60);
+    const hours = Math.floor((timeUntilEvent / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(timeUntilEvent / (1000 * 60 * 60 * 24));
+
+    return `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+  };
   // Fetch events based on the enteredName
   useEffect(() => {
     const fetchEvents = async () => {
@@ -235,6 +258,17 @@ const Activities = React.forwardRef((props, ref) => {
           }));
 
         console.log("Filtered Events:", eventData);
+
+        
+        const upcomingEvent = eventData.find((event) => {
+          const eventStartDate = new Date(event.startDateString);
+          const currentDate = new Date();
+          return eventStartDate > currentDate;
+        });
+
+        if (upcomingEvent) {
+          showCountdownModal(upcomingEvent);
+        }
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -266,8 +300,8 @@ const Activities = React.forwardRef((props, ref) => {
           setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
           onClick();
         }}
-        className="arrow-icon"
-        style={{ right: -100 }}
+        className="next"
+  
       >
         <FaChevronRight />
         {/* Customize the arrow component as needed */}
@@ -283,8 +317,8 @@ const Activities = React.forwardRef((props, ref) => {
           );
           onClick();
         }}
-        className="arrow-icon"
-        style={{ left: -100 }}
+        className="prev"
+        
       >
         <FaChevronLeft />
         {/* Customize the arrow component as needed */}
@@ -295,9 +329,10 @@ const Activities = React.forwardRef((props, ref) => {
       infinite: true,
       lazyLoad: true,
       speed: 300,
-      slidesToShow: 3,
+      slidesToShow: 1,
       centerMode: true,
       centerPadding: 0,
+      dots: true,
       nextArrow: <CustomNextArrow />,
       prevArrow: <CustomPrevArrow />,
       beforeChange: (current, next) => setCardIndex(next),
@@ -309,14 +344,8 @@ const Activities = React.forwardRef((props, ref) => {
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
           <div className="slider">
-            <Slider
-              infinite
-              lazyLoad
-              speed={300}
-              slidesToShow={3}
-              centerMode
-              centerPadding={0}>
-              {events.map((event, idx) => (
+            <Slider  {...slidesSettings}>
+             {events.map((event, idx) => (
                <Card
                  key={event.id}
                  item={event.items}
@@ -325,19 +354,12 @@ const Activities = React.forwardRef((props, ref) => {
                  zoomLink={event.zoomLink}
                  onClick={() => navigateToZoomLink(event.zoomLink)}
                  className={idx === 0 ? "slide activeSlide" : "slide"}
-/>
-                // <div
-                //   key={event.id}
-                //   onClick={() => navigateToZoomLink(event.zoomLink)}
-                //   className={idx === 0 ? "slide activeSlide" : "slide"}>
-                //   <h1>{event.items}</h1>
-                //   <p className="card-name">{event.name}</p>
-                //   <p>{event.startDateString}</p>
-                // </div>
-              ))}
+                 />
+               ))}
             </Slider>
           </div>
           <div className="prompt">
+  
             {/* Display other properties if needed */}
           </div>
         </div>
@@ -350,9 +372,10 @@ const Activities = React.forwardRef((props, ref) => {
             infinite
             lazyLoad
             speed={300}
-            slidesToShow={3}
+            slidesToShow={1}
             centerMode
-            centerPadding={0}>
+            centerPadding={0}
+            dots= {true}>
             {itemsArray.length > 0 && (
               <div className="items-container">
                 {setItemsArray.map((item, index) => (
@@ -372,6 +395,22 @@ const Activities = React.forwardRef((props, ref) => {
         </div>
       </div>
     </div>
+    {upcomingEvent && (
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Upcoming Event Countdown</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Event: {upcomingEvent.item}</p>
+            <p>Starts in: {calculateTimeUntilEvent(upcomingEvent)}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   );
 });

@@ -221,3 +221,45 @@ svg.arrow-down {
 .activitiesArrowDown {
   margin-left: 0.8%;
 }
+.modal-content {
+  background-color: #c85d5d;
+  border: 1px solid #453c3c;
+  border-radius: 5px;
+}
+
+.modal-header {
+  background-color: #0066ff;
+  color: #fff;
+  border-bottom: 1px solid #aa4a4a;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: 1px solid #e56969;
+  padding: 10px;
+}
+
+/* Countdown Styles */
+.countdown-container {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 40px;
+}
+
+.countdown-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.countdown-value {
+  font-size: 24px;
+  color: #2200ff;
+  font-weight: bold;
+}

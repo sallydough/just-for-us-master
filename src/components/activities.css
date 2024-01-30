@@ -4,7 +4,7 @@
 
 .linkStyle {
   text-decoration: none;
-  color: #f6f0c4;
+  color: #FCF8E3;
   pointer-events: none;
 }
 
@@ -154,7 +154,7 @@ svg.arrow-down {
 }
 
 .prev {
-  left: -8%;
+  left: -10%;
   top: 40%;
   size: 50px;
 }

@@ -153,7 +153,7 @@ import Slider from "react-slick";
 import axios from "axios";
 import "./activities.css";
 // import { Modal, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 
@@ -373,7 +373,7 @@ const Activities = React.forwardRef((props, ref) => {
             lazyLoad
             speed={300}
             slidesToShow={1}
-            centerMode
+            centerMode= {true}
             centerPadding={0}
             dots= {true}>
             {itemsArray.length > 0 && (

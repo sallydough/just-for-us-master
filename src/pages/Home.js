@@ -752,9 +752,27 @@ const Home = ({ enteredName }) => {
   return (
     <>
       <section id="home">
-        {/* Display Hello and the logged-in person's name */}
-        <div className="welcome-message">Logged in as: {enteredName}</div>
+        <div>
+          <span
+            style={{
+              color: "#333",
 
+              fontSize: "3rem",
+              fontWeight: "bold",
+            }}>
+            Welcome
+          </span>
+
+          <span
+            style={{
+              fontSize: "3rem",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              color: "#0066cc",
+            }}>
+            {enteredName}
+          </span>
+        </div>
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper
@@ -809,7 +827,10 @@ const Home = ({ enteredName }) => {
           {centerCardIndex === 5 && <Lights ref={lightsRef} />}
           {/* ... add more components if needed */}
         </CarouselWrapper>
+
         <CallHelpButtonComponent />
+
+        {/* Display Hello and the logged-in person's name */}
       </section>
     </>
   );

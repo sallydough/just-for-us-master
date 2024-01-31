@@ -155,7 +155,7 @@ import "./activities.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 // Define a separate Card component for rendering items
-const Card = ({ item, name, startDateString, zoomLink, onClick, className }) => (
+const Card = ({ item, name, startDateString,onClick, className }) => (
   <div onClick={onClick} className={`card ${className}`}>
     <h1>{item}</h1>
     <p className="card-name">{name}</p>

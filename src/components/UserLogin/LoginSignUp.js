@@ -110,33 +110,35 @@ const LoginSignUp = ({ onLogin, onNameEntered }) => {
   };
 
   return (
-    <div className="container">
-      <div className="header">
-        <div className="text">Login</div>
-        <div className="underline"></div>
-      </div>
-      <div className="inputs">
-        <div className="input">
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+    <div className="alignSign">
+      <div className="container">
+        <div className="header">
+          <div className="text">Login</div>
+          <div className="underline"></div>
         </div>
-      </div>
-      <div className="summit-container">
-        <Link to="/home" className="summit" onClick={handleLogin}>
-          Login
-        </Link>
-      </div>
-      {userData && (
-        <div className="user-data">
-          <p>User Data: {JSON.stringify(userData)}</p>
-          {/* Display user-specific activity here */}
-          <p>Activity: {userData.item}</p>
+        <div className="inputs">
+          <div className="input">
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
         </div>
-      )}
+        <div className="summit-container">
+          <Link to="/home" className="summit" onClick={handleLogin}>
+            Login
+          </Link>
+        </div>
+        {userData && (
+          <div className="user-data">
+            <p>User Data: {JSON.stringify(userData)}</p>
+            {/* Display user-specific activity here */}
+            <p>Activity: {userData.item}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

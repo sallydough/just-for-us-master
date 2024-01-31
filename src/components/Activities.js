@@ -215,7 +215,7 @@ const Activities = React.forwardRef((props, ref) => {
             item: item.item,
             startDateString: item.startdatestring,
             zoomLink:
-              item.location === "Online"
+              item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
                 : null,
           }));

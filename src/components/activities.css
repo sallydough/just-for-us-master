@@ -87,7 +87,7 @@
   padding: 30px;
   font-size: 60px;
 }
-.item-container{
+.item-container {
   display: flex;
   text-align: center;
   align-items: center;
@@ -264,4 +264,4 @@ svg.arrow-down {
   font-size: 80px;
   color: #2200ff;
   font-weight: bold;
-} */ 
+} */

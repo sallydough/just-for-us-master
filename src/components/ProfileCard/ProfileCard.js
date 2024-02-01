@@ -11,23 +11,22 @@ const ProfileCardLink = styled(Link)`
 `;
 
 const ProfileCardContainer = styled.div`
-  width: ${(props) => (props.active ? "270px" : "250px")};
-  height: ${(props) => (props.active ? "290px" : "250px")};
+  width: ${(props) => (props.active ? "130px" : "120px")};
+  height: ${(props) => (props.active ? "130px" : "130px")};
   background: ${(props) =>
     props.active ? "#f3b717" : props.backgroundColor || "#7F8181"};
   border-radius: ${(props) =>
     props.active ? "30%" : props.borderRadius || "38px"};
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  margin: 50px 95px;
-
+  margin: 30px 40px;
   padding: 20px;
-
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   transition: transform 0.3s, background 0.3s, border-radius 0.3s;
+  
 
   &.slick-center {
     transform: scale(1.2);
@@ -35,7 +34,8 @@ const ProfileCardContainer = styled.div`
 
     h3 {
       color: #2f302e;
-      font-size: 30px;
+      font-size: 15px;
+      
     }
 
     .icon-container svg {
@@ -44,40 +44,6 @@ const ProfileCardContainer = styled.div`
   }
 `;
 
-// const ProfileCardContainer = styled.div`
-//   width: 170px;
-//   height: 180px;
-//   background: ${(props) =>
-//     props.backgroundColor !== null && props.backgroundColor !== undefined
-//       ? props.backgroundColor
-//       : "#7F8181"};
-//   border-radius: 35px;
-//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-//   margin: 50px;
-//   padding: 20px;
-//   text-align: center;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   position: relative; /* Ensure TextBelowCard positioning is relative to this container */
-//   transition: transform 0.3s, box-shadow 0.3s;
-
-//   &:hover {
-//     transform: ${(props) => (props.disableHover ? "none" : "scale(1.2)")};
-
-//     background: ${(props) =>
-//       props.disableHover
-//         ? ""
-//         : props.backgroundColor !== null && props.backgroundColor !== undefined
-//         ? props.backgroundColor
-//         : "#f3b717"};
-//     .icon-container {
-//       svg {
-//         fill: ${(props) => (props.disableHover ? "" : "#e9ebf8")};
-//       }
-//     }
-//   }
-// `;
 
 const CardContent = styled.div`
   .icon-container {
@@ -97,7 +63,7 @@ const CardContent = styled.div`
     margin-left: 10px;
     padding-left: 5px;
     color: #f3b717;
-    font-size: 30px;
+    font-size: 15px;
   }
 `;
 

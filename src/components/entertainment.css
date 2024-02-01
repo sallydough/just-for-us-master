@@ -140,11 +140,10 @@ svg.arrow-down {
 .promptEntertainment h1 {
   width: 100vw;
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   color: #2e3e5e;
-  /* position: absolute; */
-
-  top: 90%;
+  position: absolute;
+  top: 85%;
 }
 
 /* contacts.css or your custom stylesheet */

@@ -21,19 +21,19 @@ import Activities from "../components/Activities";
 
 const HomeContainer = styled.div`
   position: relative;
-  top: 150px;
+  top: 100px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 45vh;
   text-align: center;
 `;
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-  max-width: 2500px;
-  max-height: 800px;
+  max-width: 1200px;
+  max-height: 700px;
   justify-content: center;
   display: unset;
   place-items: center;
@@ -86,14 +86,14 @@ const CardColumn = styled.div`
 `;
 
 const CustomArrowButton = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   z-index: 1;
 
@@ -159,7 +159,8 @@ const CustomPrevArrow = ({ onClick }) => (
 
 const TextBelowCard = styled.h1`
   margin: 0;
-  font-size: 46px;
+  width: 300px;
+  font-size: 26px;
   color: #2e3e5e;
   position: relative;
   left: 0%;
@@ -179,47 +180,49 @@ const SpaceBeforeBelowCard = styled.h1`
 
 const PromptDiv = styled.h1`
   display: flex;
+  width: 100vw;
+  text-align: center;
 `;
 
 const cardData = [
   {
-    icon: <TvIcon />,
+    icon: <TvIcon size={50} />,
     title: "TV",
-    spaceBeforeBelowCard: "..... ....",
+    spaceBeforeBelowCard: ".....",
     textBelowCard: "Watch TV?",
     page: <Television />,
   },
   {
-    icon: <GiWeightLiftingUp size={150} />,
+    icon: <GiWeightLiftingUp size={50} />,
     title: "ACTIVITIES",
-    spaceBeforeBelowCard: "......",
+    spaceBeforeBelowCard: "..",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
   },
   {
-    icon: <GiFilmSpool size={150} />,
+    icon: <GiFilmSpool size={50} />,
     title: "ENTERTAINMENT",
-    spaceBeforeBelowCard: "..",
+    spaceBeforeBelowCard: "",
     textBelowCard: "Watch Entertainment?",
     page: <Entertainment />,
   },
   {
-    icon: <IoMdPhotos size={150} />,
+    icon: <IoMdPhotos size={50} />,
     title: "GALLERY",
-    spaceBeforeBelowCard: ".... ....",
+    spaceBeforeBelowCard: ". .",
     textBelowCard: "View Gallery?",
   },
   {
-    icon: <FaPhoneAlt size={150} />,
+    icon: <FaPhoneAlt size={50} />,
     title: "VIDEO CALL",
-    spaceBeforeBelowCard: ".....",
+    spaceBeforeBelowCard: "..",
     textBelowCard: "Make a Video Call?",
     page: <Contacts />,
   },
   {
-    icon: <FaLightbulb size={150} />,
+    icon: <FaLightbulb size={50} />,
     title: "LIGHTS",
-    spaceBeforeBelowCard: ".... ..",
+    spaceBeforeBelowCard: "...",
     textBelowCard: "Change Lights?",
     page: <Lights />,
   },
@@ -281,7 +284,7 @@ const Home = ({ enteredName }) => {
             style={{
               color: "#333",
 
-              fontSize: "3rem",
+              fontSize: "2rem",
               fontWeight: "bold",
             }}>
             Welcome
@@ -289,7 +292,7 @@ const Home = ({ enteredName }) => {
 
           <span
             style={{
-              fontSize: "3rem",
+              fontSize: "2rem",
               fontWeight: "bold",
               textTransform: "uppercase",
               color: "#0066cc",

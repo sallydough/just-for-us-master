@@ -30,7 +30,7 @@ const StyledButtonAlignment = styled(Typography)`
 `;
 
 const CallHelpButton = styled.button`
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 20px;
   padding: 10px;
   background-color: ${({ active }) => (active ? "#ff4d4d" : "#59acce")};
@@ -156,11 +156,11 @@ const CallHelpButtonComponent = ({ onClick }) => {
         active={isButtonClicked}
       >
         <Typography
-          fontSize={"48px"}
+          fontSize={"30px"}
           fontWeight="700"
           style={{ display: "flex", alignItems: "center", padding: "0 20px" }}
         >
-          <TelephoneIcon size={60} />
+          <TelephoneIcon size={30} />
           <div style={{ paddingLeft: "10px" }}>CALL SUSAN</div>
         </Typography>
       </CallHelpButton>

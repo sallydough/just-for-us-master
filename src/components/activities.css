@@ -16,11 +16,6 @@
   position: relative;
 }
 
-.slider-call {
-  display: flex;
-  flex-direction: column;
-  padding-top: 9rem;
-}
 
 .home-logo {
   display: flex;
@@ -72,11 +67,12 @@
   text-align: center;
   align-items: center;
   flex-direction: column;
-  transform: scale(0.7);
+  
+  transform: scale(0.5);
   transition: transform 300ms;
   opacity: 1;
   gap: 0.8rem;
-  height: 27rem;
+  height: 15rem;
   padding: 4rem 3rem;
   background-color: #7f8181;
   border-radius: 3rem;
@@ -84,15 +80,15 @@
 }
 
 .slide h1 {
-  padding: 30px;
-  font-size: 60px;
+  padding: 10px;
+  font-size: 35px;
 }
 .item-container {
   display: flex;
   text-align: center;
   align-items: center;
   flex-direction: column;
-  transform: scale(0.7);
+  transform: scale(0.3);
   transition: transform 300ms;
   opacity: 1;
   gap: 0.8rem;
@@ -108,7 +104,7 @@
 }
 
 .activeSlide {
-  transform: scale(0.9);
+  transform: scale(0.8);
   opacity: 1;
   background-color: #f3b718;
 }
@@ -163,7 +159,7 @@ svg.arrow-down {
 .prompt h1 {
   width: 100vw;
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   color: #2e3e5e;
   /* position: absolute; */
 

@@ -21,12 +21,12 @@ import Activities from "../components/Activities";
 
 const HomeContainer = styled.div`
   position: relative;
-  top: 100px;
+  top: 80px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  min-height: 45vh;
+  min-height: 42vh;
   text-align: center;
 `;
 

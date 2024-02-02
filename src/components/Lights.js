@@ -199,28 +199,28 @@ const contactList = [
     name: "LIVING ROOM LIGHTS",
     pathway: "/home",
     call: "Turn lights on?",
-    icon: <BsLightbulbFill size={230} className="nav-icon" />,
+    icon: <BsLightbulbFill size={50} className="nav-icon" />,
   },
   {
     id: 2,
     name: "KITCHEN LIGHTS",
     pathway: "/iotControls",
     call: "Turn lights on?",
-    icon: <BsLightbulbFill size={230} className="nav-icon" />,
+    icon: <BsLightbulbFill size={120} className="nav-icon" />,
   },
   {
     id: 3,
     name: "BATHROOM LIGHTS",
     pathway: "/entertainment",
     call: "Turn lights off?",
-    icon: <BsLightbulbFill size={230} className="nav-icon" />,
+    icon: <BsLightbulbFill size={120} className="nav-icon" />,
   },
   {
     id: 4,
     name: "BATHROOM LIGHTS",
     pathway: "/calendar",
     call: "Turn lights off?",
-    icon: <BsLightbulbFill size={230} className="nav-icon" />,
+    icon: <BsLightbulbFill size={120} className="nav-icon" />,
   },
 ];
 
@@ -280,12 +280,12 @@ const Lights = () => {
                 className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                 {isYellow ? (
                   <BsLightbulbFill
-                    size={230}
+                    size={120}
                     color="yellow"
                     onClick={toggleColor}
                   />
                 ) : (
-                  <BsLightbulb size={230} color="white" onClick={toggleColor} />
+                  <BsLightbulb size={130} color="white" onClick={toggleColor} />
                 )}
                 <h1 className="card-name">{card.name}</h1>
               </div>

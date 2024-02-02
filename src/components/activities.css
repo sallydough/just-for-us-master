@@ -46,7 +46,7 @@
   }
 
   .slide h1 {
-    font-size: 60px;
+    font-size: 100px;
   }
 }
 /* change centering between carousel slides */
@@ -163,11 +163,15 @@ svg.arrow-down {
 .prompt h1 {
   width: 100vw;
   text-align: center;
-  font-size: 50px;
+  font-size: 100px;
   color: #2e3e5e;
   /* position: absolute; */
 
   top: 92%;
+}
+
+.card-name{
+  font-size: large;
 }
 
 /* contacts.css or your custom style sheet */

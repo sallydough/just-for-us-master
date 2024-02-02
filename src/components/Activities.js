@@ -213,7 +213,8 @@ const Activities = React.forwardRef((props, ref) => {
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDateString: item.startdatestring,
+            // startDateString: item.startdatestring,
+            startDate: new Date(item.startdatestring), // Convert the start date to a Date object
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
@@ -263,8 +264,17 @@ const Activities = React.forwardRef((props, ref) => {
                   onClick={() => navigateToZoomLink(event.zoomLink)}
                   className={idx === 0 ? "slide activeSlide" : "slide"}>
                   <h1>{event.item}</h1>
-                  <p className="card-name">{event.name}</p>
-                  <p>{event.startDateString}</p>
+                  <p className="card-name"style={{ fontSize: 60}}>{event.name}</p>
+                  {/* <p>{event.startDateString}</p> */}
+                  <p className="card-name" style={{ fontSize: 60}}>{event.startDate.toLocaleString('en-US', 
+                  { timeZone: 'America/Edmonton',
+                   weekday: 'long', 
+                   year: 'numeric', 
+                   month: 'long', 
+                   day: 'numeric', 
+                   hour: 'numeric', 
+                   minute: 'numeric'
+                    })}</p>
                 </div>
               ))}
             </Slider>

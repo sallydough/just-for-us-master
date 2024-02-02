@@ -156,6 +156,15 @@ svg.arrow-down {
   top: 92%;
 }
 
+.promptContact h1 {
+  width: 100vw;
+  text-align: center;
+  font-size: 30px;
+  color: #2e3e5e;
+  position: absolute;
+  top: 80%;
+}
+
 .card-name {
   color: black;
 }

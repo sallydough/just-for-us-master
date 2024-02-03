@@ -137,7 +137,8 @@ const Activities = React.forwardRef((props, ref) => {
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDateString: item.startdatestring,
+            // startDateString: item.startdatestring,
+            startDate: new Date(item.startdatestring), // Convert the start date to a Date object
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
@@ -172,11 +173,36 @@ const Activities = React.forwardRef((props, ref) => {
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
           <div className="slider">
-            {/* Render the CustomSlider component */}
-            <CustomSlider
-              events={events}
-              navigateToZoomLink={navigateToZoomLink}
-            />
+            <Slider
+              infinite
+              lazyLoad
+              speed={300}
+              slidesToShow={1}
+              centerPadding={0}>
+              {events.map((event, idx) => (
+                <div
+                  key={event.id}
+                  onClick={() => navigateToZoomLink(event.zoomLink)}
+                  className={idx === 0 ? "slide activeSlide" : "slide"}>
+                  <h1>{event.item}</h1>
+                  <p className="card-name" style={{ fontSize: 50 }}>
+                    {event.name}
+                  </p>
+                  {/* <p>{event.startDateString}</p> */}
+                  <p className="card-name" style={{ fontSize: 50 }}>
+                    {event.startDate.toLocaleString("en-US", {
+                      timeZone: "America/Edmonton",
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                    })}
+                  </p>
+                </div>
+              ))}
+            </Slider>
           </div>
           <div className="prompt">
             {/* Display other properties if needed */}

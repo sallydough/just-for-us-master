@@ -426,35 +426,43 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+      
+     
       {isModalOpen && selectedEvent && (
-        <div className="overlay">
-          <div className="modal">
-            <div>
-              <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
-              <p className="card-name" style={{ fontSize: 50 }}>
-                {selectedEvent.startDate.toLocaleString('en-US', {
-                  timeZone: 'America/Edmonton',
-                  hour: 'numeric',
-                  minute: 'numeric'
-                })}
-              </p>
+  <div className="overlay">
+    <div className="modal">
+      <div>
+        <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
+        <p className="card-name" style={{ fontSize: 50 }}>
+          {selectedEvent.startDate.toLocaleString('en-US', {
+            timeZone: 'America/Edmonton',
+            hour: 'numeric',
+            minute: 'numeric'
+          })}
+        </p>
 
-              {/* Conditional rendering based on event availability */}
-              {selectedEvent.startDate > new Date() ? (
-                <>
-                  <button onClick={() => navigateToZoomLink(selectedEvent.zoomLink)}>
-                    Join Now
-                  </button>
-                  <p style={{ fontSize: 50 }}>Apologies, the event is not available.</p>
-                </>
-              ) : (
-                <p style={{ fontSize: 50 }}>Apologies, the event is not available.</p>
-              )}
-              <button onClick={closeModal}>Close</button>
-            </div>
-          </div>
-        </div>
-      )}
+        {/* Conditional rendering based on event availability */}
+        {selectedEvent.startDate <= new Date() ? (
+          <p style={{ fontSize: 50 }}>Apologies, the event is not available now.</p>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                window.open(selectedEvent.zoomLink, '_blank');
+                closeModal();
+              }}
+              style={{ fontSize: 50 }}
+            >
+              Join Now
+            </button>
+          </>
+        )}
+        <button onClick={closeModal} style={{ fontSize: 50 }}>Close</button>
+      </div>
+    </div>
+  </div>
+)}
+
     </>
   );
 });

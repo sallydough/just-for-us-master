@@ -388,7 +388,7 @@ const Activities = React.forwardRef((props, ref) => {
               infinite
               lazyLoad
               speed={300}
-              slidesToShow={3}
+              slidesToShow={1}
               centerPadding={0}>
               {events.map((event, idx) => (
                 <div

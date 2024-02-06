@@ -390,7 +390,7 @@ const Activities = React.forwardRef((props, ref) => {
                   onClick={() => navigateToZoomLink(event)}
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   <h1>{event.item}</h1>
-                  <p className="card-name" style={{ fontSize: 34 }}>
+                  <p className="card-name" style={{ fontSize: 20 }}>
                     {event.name}
                   </p>
                   {/* <p>{event.startDateString}</p> */}

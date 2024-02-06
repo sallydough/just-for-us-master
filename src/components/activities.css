@@ -108,7 +108,7 @@
 }
 
 .activeSlide {
-  transform: scale(0.9);
+  transform: scale(0.85);
   opacity: 1;
   background-color: #f3b718;
 }

@@ -397,9 +397,9 @@ const Activities = React.forwardRef((props, ref) => {
                   <p className="card-name" style={{ fontSize: 34 }}>
                     {event.startDate.toLocaleString("en-US", {
                       timeZone: "America/Edmonton",
-                      // weekday: "long",
-                      // year: "numeric",
-                      // month: "long",
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
                       day: "numeric",
                       hour: "numeric",
                       minute: "numeric",
@@ -416,41 +416,42 @@ const Activities = React.forwardRef((props, ref) => {
       </div>
 
       {isModalOpen && selectedEvent && (
-        <div className="overlay">
-          <div className="modal">
-            <div>
-              <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
-              <p className="card-name" style={{ fontSize: 50 }}>
-                {selectedEvent.startDate.toLocaleString("en-US", {
-                  timeZone: "America/Edmonton",
-                  hour: "numeric",
-                  minute: "numeric",
-                })}
-              </p>
+  <div className="overlay">
+    <div className="modal">
+      <div>
+        <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
+        <p className="card-name" style={{ fontSize: 50 }}>
+          {selectedEvent.startDate.toLocaleString("en-US", {
+            timeZone: "America/Edmonton",
+            hour: "numeric",
+            minute: "numeric",
+          })}
+        </p>
 
-              {/* Conditional rendering based on event availability */}
-              {selectedEvent.startDate > new Date() ? (
-                <>
-                   <button
-                  onClick={() => window.open(selectedEvent.zoomLink, '_blank')}
-                    style={{ fontSize: 50 }}
+        {/* Conditional rendering based on event availability */}
+        {selectedEvent.startDate > new Date() ? (
+          <>
+            <button
+              onClick={() => window.open(selectedEvent.zoomLink, '_blank')}
+              style={{ fontSize: 50 }}
             >
               Join Now
             </button>
-                  <p style={{ fontSize: 50 }}>
-                    Apologies, the event is not available.
-                  </p>
-                </>
-              ) : (
-                <p style={{ fontSize: 50 }}>
-                  Apologies, the event is not available.
-                </p>
-              )}
-              <button onClick={closeModal}>Close</button>
-            </div>
-          </div>
-        </div>
-      )}
+            <p style={{ fontSize: 50 }}>
+              Apologies, the event is not available.
+            </p>
+          </>
+        ) : (
+          <p style={{ fontSize: 50 }}>
+            Apologies, the event is not available.
+          </p>
+        )}
+        <button onClick={closeModal}>Close</button>
+      </div>
+    </div>
+  </div>
+)}
+
     </>
   );
 });

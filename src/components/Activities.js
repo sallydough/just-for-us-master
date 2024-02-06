@@ -290,10 +290,7 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
           <p className="card-name" style={{ fontSize: 25 }}>
             {event.startDate.toLocaleString("en-US", {
               timeZone: "America/Edmonton",
-              // weekday: "long",
-              // year: "numeric",
-              // month: "long",
-              day: "numeric",
+               day: "numeric",
               hour: "numeric",
               minute: "numeric",
             })}

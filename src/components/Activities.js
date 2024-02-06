@@ -221,86 +221,48 @@ import "./activities.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import styled from "styled-components";
 
-const CustomSlider = ({ events, navigateToZoomLink }) => {
-  const CustomArrowButton = styled.div`
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
+// const CustomSlider = ({ events, navigateToZoomLink }) => {
+const CustomArrowButton = styled.div`
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 
-    &:active {
-      transform: translateY(-50%), scale(0.95);
-    }
-  `;
+  &:active {
+    transform: translateY(-50%), scale(0.95);
+  }
+`;
 
-  const [cardIndex, setCardIndex] = useState(0);
-
-  const CustomNextArrow = ({ onClick }) => (
-    <CustomArrowButton
-      onClick={() => {
-        setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
-        onClick();
-      }}
-      style={{ right: -100 }}>
-      <ChevronRightIcon />
-    </CustomArrowButton>
-  );
-
-  const CustomPrevArrow = ({ onClick }) => (
-    <CustomArrowButton
-      onClick={() => {
-        setCardIndex(
-          (prevIndex) => (prevIndex - 1 + events.length) % events.length
-        );
-        onClick();
-      }}
-      style={{ left: -100 }}>
-      <ChevronLeftIcon />
-    </CustomArrowButton>
-  );
-
-  const settings = {
-    centerMode: true,
-    infinite: true,
-    lazyLoad: true,
-    speed: 300,
-    slidesToShow: 3,
-    centerPadding: 0,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
-    beforeChange: (current, next) => setCardIndex(next),
-  };
-
-  return (
-    <CustomSlider {...settings}>
-      {events.map((event, idx) => (
-        <div
-          key={event.id}
-          onClick={() => navigateToZoomLink(event.zoomLink)}
-          className={idx === cardIndex ? "slide activeSlide" : "slide"}>
-          <h1>{event.item}</h1>
-          <p className="card-name" style={{ fontSize: 25 }}>
-            {event.name}
-          </p>
-          <p className="card-name" style={{ fontSize: 25 }}>
-            {event.startDate.toLocaleString("en-US", {
-              timeZone: "America/Edmonton",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-            })}
-          </p>
-        </div>
-      ))}
-    </CustomSlider>
-  );
-};
+//   return (
+//     <CustomSlider {...settings}>
+//       {events.map((event, idx) => (
+//         <div
+//           key={event.id}
+//           onClick={() => navigateToZoomLink(event.zoomLink)}
+//           className={idx === cardIndex ? "slide activeSlide" : "slide"}>
+//           <h1>{event.item}</h1>
+//           <p className="card-name" style={{ fontSize: 25 }}>
+//             {event.name}
+//           </p>
+//           <p className="card-name" style={{ fontSize: 25 }}>
+//             {event.startDate.toLocaleString("en-US", {
+//               timeZone: "America/Edmonton",
+//               day: "numeric",
+//               hour: "numeric",
+//               minute: "numeric",
+//             })}
+//           </p>
+//         </div>
+//       ))}
+//     </CustomSlider>
+//   );
+// };
 
 const Activities = React.forwardRef((props, ref) => {
   const { enteredName } = props;
@@ -309,6 +271,7 @@ const Activities = React.forwardRef((props, ref) => {
   const [events, setEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [cardIndex, setCardIndex] = useState(0);
 
   const navigateToZoomLink = (event) => {
     setSelectedEvent(event);
@@ -379,22 +342,53 @@ const Activities = React.forwardRef((props, ref) => {
     return <p>Error: {error.message}</p>;
   }
 
+  const CustomNextArrow = ({ onClick }) => (
+    <CustomArrowButton
+      onClick={() => {
+        setCardIndex((prevIndex) => (prevIndex + 1) % events.length);
+        onClick();
+      }}
+      style={{ right: -100 }}>
+      <ChevronRightIcon />
+    </CustomArrowButton>
+  );
+
+  const CustomPrevArrow = ({ onClick }) => (
+    <CustomArrowButton
+      onClick={() => {
+        setCardIndex(
+          (prevIndex) => (prevIndex - 1 + events.length) % events.length
+        );
+        onClick();
+      }}
+      style={{ left: -100 }}>
+      <ChevronLeftIcon />
+    </CustomArrowButton>
+  );
+
+  const settings = {
+    centerMode: true,
+    infinite: true,
+    lazyLoad: true,
+    speed: 300,
+    slidesToShow: 3,
+    centerPadding: 0,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+    beforeChange: (current, next) => setCardIndex(next),
+  };
+
   return (
     <>
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
           <div className="slider">
-            <Slider
-              infinite
-              lazyLoad
-              speed={300}
-              slidesToShow={3}
-              centerPadding={0}>
+            <Slider {...settings}>
               {events.map((event, idx) => (
                 <div
                   key={event.id}
                   onClick={() => navigateToZoomLink(event)}
-                  className={idx === 0 ? "slide activeSlide" : "slide"}>
+                  className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   <h1>{event.item}</h1>
                   <p className="card-name" style={{ fontSize: 40 }}>
                     {event.name}

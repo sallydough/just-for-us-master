@@ -76,15 +76,15 @@
   transition: transform 300ms;
   opacity: 1;
   gap: 0.4rem;
-  height: 20rem;
-  padding: 3rem 2rem;
+  height: 18rem;
+  padding: 2rem 2rem;
   background-color: #7f8181;
   border-radius: 3rem;
   position: relative;
 }
 
 .slide h1 {
-  padding: 30px;
+  padding: 20px;
   font-size: 35px;
 }
 .item-container {

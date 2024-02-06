@@ -402,9 +402,9 @@ const Activities = React.forwardRef((props, ref) => {
                   <p className="card-name" style={{ fontSize: 40 }}>
                     {event.startDate.toLocaleString("en-US", {
                       timeZone: "America/Edmonton",
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
+                      // weekday: "long",
+                      // year: "numeric",
+                      // month: "long",
                       day: "numeric",
                       hour: "numeric",
                       minute: "numeric",
@@ -437,10 +437,12 @@ const Activities = React.forwardRef((props, ref) => {
               {/* Conditional rendering based on event availability */}
               {selectedEvent.startDate > new Date() ? (
                 <>
-                  <button
-                    onClick={() => navigateToZoomLink(selectedEvent.zoomLink)}>
-                    Join Now
-                  </button>
+                   <button
+                  onClick={() => window.open(selectedEvent.zoomLink, '_blank')}
+                    style={{ fontSize: 50 }}
+            >
+              Join Now
+            </button>
                   <p style={{ fontSize: 50 }}>
                     Apologies, the event is not available.
                   </p>

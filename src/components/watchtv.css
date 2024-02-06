@@ -69,3 +69,8 @@ svg.arrow-down {
 .tvArrowDown {
   margin-left: 9.3%;
 }
+
+.card-name-live-tv {
+  font-size: 35px;
+  color: black;
+}

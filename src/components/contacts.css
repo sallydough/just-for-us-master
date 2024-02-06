@@ -170,6 +170,10 @@ svg.arrow-down {
   font-size: 10px;
 }
 
+.card-name .live-tv {
+  font-size: 35px;
+}
+
 /* contacts.css or your custom stylesheet */
 .custom-modal {
   background-color: goldenrod;

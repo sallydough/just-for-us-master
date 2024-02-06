@@ -262,8 +262,7 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
     <CustomArrowButton
       onClick={() => {
         setCardIndex(
-          (prevIndex) =>
-            (prevIndex - 1 + events.length) % events.length
+          (prevIndex) => (prevIndex - 1 + events.length) % events.length
         );
         onClick();
       }}
@@ -288,7 +287,7 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
       {events.map((event, idx) => (
         <div
           key={event.id}
-          onClick={() => navigateToZoomLink(event)}
+          onClick={() => navigateToZoomLink(event.zoomLink)}
           className={idx === cardIndex ? "slide activeSlide" : "slide"}>
           <h1>{event.item}</h1>
           <p className="card-name" style={{ fontSize: 50 }}>{event.name}</p>
@@ -403,16 +402,19 @@ const Activities = React.forwardRef((props, ref) => {
                   onClick={() => navigateToZoomLink(event)}
                   className={idx === 0 ? "slide activeSlide" : "slide"}>
                   <h1>{event.item}</h1>
-                  <p className="card-name" style={{ fontSize: 50 }}>{event.name}</p>
                   <p className="card-name" style={{ fontSize: 50 }}>
-                    {event.startDate.toLocaleString('en-US', {
-                      timeZone: 'America/Edmonton',
-                      weekday: 'long',
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: 'numeric'
+                    {event.name}
+                  </p>
+                  {/* <p>{event.startDateString}</p> */}
+                  <p className="card-name" style={{ fontSize: 50 }}>
+                    {event.startDate.toLocaleString("en-US", {
+                      timeZone: "America/Edmonton",
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
                     })}
                   </p>
                 </div>

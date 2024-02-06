@@ -274,6 +274,7 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
     centerPadding: 0,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    beforeChange: (current, next) => setCardIndex(next),
   };
 
   return (
@@ -290,7 +291,7 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
           <p className="card-name" style={{ fontSize: 25 }}>
             {event.startDate.toLocaleString("en-US", {
               timeZone: "America/Edmonton",
-               day: "numeric",
+              day: "numeric",
               hour: "numeric",
               minute: "numeric",
             })}
@@ -419,8 +420,7 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      
-     
+
       {isModalOpen && selectedEvent && (
         <div className="overlay">
           <div className="modal">

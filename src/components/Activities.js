@@ -284,10 +284,10 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
           onClick={() => navigateToZoomLink(event.zoomLink)}
           className={idx === cardIndex ? "slide activeSlide" : "slide"}>
           <h1>{event.item}</h1>
-          <p className="card-name" style={{ fontSize: 50 }}>
+          <p className="card-name" style={{ fontSize: 25 }}>
             {event.name}
           </p>
-          <p className="card-name" style={{ fontSize: 50 }}>
+          <p className="card-name" style={{ fontSize: 25 }}>
             {event.startDate.toLocaleString("en-US", {
               timeZone: "America/Edmonton",
               weekday: "long",

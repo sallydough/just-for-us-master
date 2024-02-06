@@ -5,7 +5,6 @@
 // import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 // import styled from "styled-components";
 
-
 // // Create a new Slider component with its specific settings
 // const CustomSlider = ({ events, navigateToZoomLink }) => {
 //   const CustomArrowButton = styled.div`
@@ -74,9 +73,6 @@
 //     nextArrow: <CustomNextArrow />,
 //     prevArrow: <CustomPrevArrow />,
 //   };
-
- 
-
 
 //   return (
 //     <CustomSlider {...settings}>
@@ -193,13 +189,13 @@
 //                   <h1>{event.item}</h1>
 //                   <p className="card-name"style={{ fontSize: 50}}>{event.name}</p>
 //                   {/* <p>{event.startDateString}</p> */}
-//                   <p className="card-name" style={{ fontSize: 50}}>{event.startDate.toLocaleString('en-US', 
+//                   <p className="card-name" style={{ fontSize: 50}}>{event.startDate.toLocaleString('en-US',
 //                   { timeZone: 'America/Edmonton',
-//                    weekday: 'long', 
-//                    year: 'numeric', 
-//                    month: 'long', 
-//                    day: 'numeric', 
-//                    hour: 'numeric', 
+//                    weekday: 'long',
+//                    year: 'numeric',
+//                    month: 'long',
+//                    day: 'numeric',
+//                    hour: 'numeric',
 //                    minute: 'numeric'
 //                     })}</p>
 //                 </div>
@@ -217,8 +213,6 @@
 
 // // Export the Activities component
 // export default Activities;
-
-
 
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
@@ -290,16 +284,18 @@ const CustomSlider = ({ events, navigateToZoomLink }) => {
           onClick={() => navigateToZoomLink(event.zoomLink)}
           className={idx === cardIndex ? "slide activeSlide" : "slide"}>
           <h1>{event.item}</h1>
-          <p className="card-name" style={{ fontSize: 50 }}>{event.name}</p>
           <p className="card-name" style={{ fontSize: 50 }}>
-            {event.startDate.toLocaleString('en-US', {
-              timeZone: 'America/Edmonton',
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-              hour: 'numeric',
-              minute: 'numeric'
+            {event.name}
+          </p>
+          <p className="card-name" style={{ fontSize: 50 }}>
+            {event.startDate.toLocaleString("en-US", {
+              timeZone: "America/Edmonton",
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
             })}
           </p>
         </div>
@@ -394,7 +390,7 @@ const Activities = React.forwardRef((props, ref) => {
               infinite
               lazyLoad
               speed={300}
-              slidesToShow={1}
+              slidesToShow={3}
               centerPadding={0}>
               {events.map((event, idx) => (
                 <div
@@ -432,23 +428,28 @@ const Activities = React.forwardRef((props, ref) => {
             <div>
               <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
               <p className="card-name" style={{ fontSize: 50 }}>
-                {selectedEvent.startDate.toLocaleString('en-US', {
-                  timeZone: 'America/Edmonton',
-                  hour: 'numeric',
-                  minute: 'numeric'
+                {selectedEvent.startDate.toLocaleString("en-US", {
+                  timeZone: "America/Edmonton",
+                  hour: "numeric",
+                  minute: "numeric",
                 })}
               </p>
 
               {/* Conditional rendering based on event availability */}
               {selectedEvent.startDate > new Date() ? (
                 <>
-                  <button onClick={() => navigateToZoomLink(selectedEvent.zoomLink)}>
+                  <button
+                    onClick={() => navigateToZoomLink(selectedEvent.zoomLink)}>
                     Join Now
                   </button>
-                  <p style={{ fontSize: 50 }}>Apologies, the event is not available.</p>
+                  <p style={{ fontSize: 50 }}>
+                    Apologies, the event is not available.
+                  </p>
                 </>
               ) : (
-                <p style={{ fontSize: 50 }}>Apologies, the event is not available.</p>
+                <p style={{ fontSize: 50 }}>
+                  Apologies, the event is not available.
+                </p>
               )}
               <button onClick={closeModal}>Close</button>
             </div>
@@ -460,4 +461,3 @@ const Activities = React.forwardRef((props, ref) => {
 });
 
 export default Activities;
-      

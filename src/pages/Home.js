@@ -18,6 +18,9 @@ import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
 import Activities from "../components/Activities";
+// Imports for react-toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -28,6 +31,11 @@ const HomeContainer = styled.div`
   justify-content: center;
   min-height: 42vh;
   text-align: center;
+`;
+const WelcomeWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 `;
 
 const CarouselWrapper = styled.div`
@@ -276,30 +284,45 @@ const Home = ({ enteredName }) => {
     return () => {};
   }, []);
 
+    // react-toastify function that invokes a notification
+    const showToastMessage = () => {
+      toast.success("Your Zoom Activity starts in 10 minutes. Please Join Now.", {
+        position: toast.POSITION,
+      });
+    };
+
   return (
     <>
       <section id="home">
+        {/* Wrapper for Welcome and username */}
+        <WelcomeWrapper>
+          <div>
+            <span
+              style={{
+                color: "#333",
+                fontSize: "2rem",
+                fontWeight: "bold",
+              }}>
+              Welcome
+            </span>
+          </div>
+
+          <div>
+            <span
+              style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                color: "#0066cc",
+              }}>
+              {enteredName}
+            </span>
+          </div>
+        </WelcomeWrapper>    
         <div>
-          <span
-            style={{
-              color: "#333",
-
-              fontSize: "2rem",
-              fontWeight: "bold",
-            }}>
-            Welcome
-          </span>
-
-          <span
-            style={{
-              fontSize: "2rem",
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              color: "#0066cc",
-            }}>
-            {enteredName}
-          </span>
-        </div>
+      <button onClick={showToastMessage}>Notify</button>
+      <ToastContainer position="top-right" />
+    </div>
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper

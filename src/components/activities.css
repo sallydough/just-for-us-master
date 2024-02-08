@@ -76,16 +76,16 @@
   transition: transform 300ms;
   opacity: 1;
   gap: 0.4rem;
-  height: 20rem;
-  padding: 3rem 2rem;
-  background-color: #7f8181;
+  height: 18rem;
+  padding: 2rem 2rem;
+  background-color: #8e8a86;
   border-radius: 3rem;
   position: relative;
 }
 
 .slide h1 {
-  padding: 30px;
-  font-size: 40px;
+  padding: 20px;
+  font-size: 35px;
 }
 .item-container {
   display: flex;
@@ -99,6 +99,7 @@
   height: 20rem;
   padding: 2rem 3rem;
   background-color: #7f8181;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 3rem;
   position: relative;
 }
@@ -108,9 +109,10 @@
 }
 
 .activeSlide {
-  transform: scale(0.9);
+  transform: scale(0.8);
   opacity: 1;
   background-color: #f3b718;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .arrow {

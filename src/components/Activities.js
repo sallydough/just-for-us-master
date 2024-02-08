@@ -290,7 +290,7 @@ const Activities = React.forwardRef((props, ref) => {
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDate: new Date(item.startdatestring),
+            startDate: moment(new Date(item.startdatestring)).format('dddd MMMM Do, h:mm a'),
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"

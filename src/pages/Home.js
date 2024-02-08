@@ -29,6 +29,11 @@ const HomeContainer = styled.div`
   min-height: 42vh;
   text-align: center;
 `;
+const WelcomeWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+`;
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
@@ -279,27 +284,32 @@ const Home = ({ enteredName }) => {
   return (
     <>
       <section id="home">
-        <div>
-          <span
-            style={{
-              color: "#333",
+        {/* Wrapper for Welcome and username */}
+        <WelcomeWrapper>
+          <div>
+            <span
+              style={{
+                color: "#333",
+                fontSize: "2rem",
+                fontWeight: "bold",
+              }}>
+              Welcome
+            </span>
+          </div>
 
-              fontSize: "2rem",
-              fontWeight: "bold",
-            }}>
-            Welcome
-          </span>
+          <div>
+            <span
+              style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                color: "#0066cc",
+              }}>
+              {enteredName}
+            </span>
+          </div>
+        </WelcomeWrapper>
 
-          <span
-            style={{
-              fontSize: "2rem",
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              color: "#0066cc",
-            }}>
-            {enteredName}
-          </span>
-        </div>
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper

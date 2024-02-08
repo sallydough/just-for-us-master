@@ -79,6 +79,7 @@
   height: 18rem;
   padding: 2rem 2rem;
   background-color: #7f8181;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 3rem;
   position: relative;
 }
@@ -99,6 +100,7 @@
   height: 20rem;
   padding: 2rem 3rem;
   background-color: #7f8181;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 3rem;
   position: relative;
 }
@@ -111,6 +113,7 @@
   transform: scale(0.8);
   opacity: 1;
   background-color: #f3b718;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .arrow {

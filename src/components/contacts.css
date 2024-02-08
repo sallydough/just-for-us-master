@@ -75,6 +75,7 @@
   background-color: #7f8181;
   border-radius: 3rem;
   position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .slide h1 {
@@ -90,6 +91,7 @@
   transform: scale(0.9);
   opacity: 1;
   background-color: #f3b718;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .arrow {

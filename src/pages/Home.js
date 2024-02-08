@@ -318,18 +318,7 @@ const Home = ({ enteredName }) => {
               {enteredName}
             </span>
           </div>
-        </WelcomeWrapper>
-
-          <span
-            style={{
-              fontSize: "2rem",
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              color: "#0066cc",
-            }}>
-            {enteredName}
-          </span>
-      
+        </WelcomeWrapper>    
         <div>
       <button onClick={showToastMessage}>Notify</button>
       <ToastContainer position="top-right" />

@@ -220,6 +220,7 @@ import axios from "axios";
 import "./activities.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import styled from "styled-components";
+import moment from 'moment';
 
 // const CustomSlider = ({ events, navigateToZoomLink }) => {
 const CustomArrowButton = styled.div`
@@ -314,7 +315,7 @@ const Activities = React.forwardRef((props, ref) => {
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDate: new Date(item.startdatestring),
+            startDate: moment(new Date(item.startdatestring)).format('dddd MMMM Do, h:mm a'),
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"

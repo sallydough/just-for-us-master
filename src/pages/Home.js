@@ -34,7 +34,7 @@ const HomeContainer = styled.div`
 `;
 const WelcomeWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
 `;
 

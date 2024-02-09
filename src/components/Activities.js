@@ -696,7 +696,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 // import { css } from "@emotion/react";
 // import { ClipLoader } from "react-spinners";
@@ -858,22 +858,19 @@ const Activities = React.forwardRef((props, ref) => {
                     {event.name}
                   </p> */}
                   {/* <p>{event.startDateString}</p> */}
-                  {/* <p className="card-name" style={{ fontSize: 34 }}>
-                    {event.startDate.toLocaleString("en-US", {
-                      timeZone: "America/Edmonton",
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                    })}
-                  </p> */}
-                  <p className="card-name" style={{ fontSize: 34 }}>
-                    {format(event.startDate, "EEEE, MMMM do yyyy, h:mm a", {
-                      timeZone: "America/Edmonton",
-                    })}
-                  </p>
+                  {
+                    <p className="card-name" style={{ fontSize: 34 }}>
+                      {event.startDate.toLocaleString("en-US", {
+                        timeZone: "America/Edmonton",
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                      })}
+                    </p>
+                  }
                 </div>
               ))}
             </Slider>

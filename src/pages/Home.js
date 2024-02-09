@@ -191,19 +191,21 @@ const PromptDiv = styled.h1`
 
 const cardData = [
   {
-    icon: <TvIcon size={50} />,
-    title: "TV",
-    spaceBeforeBelowCard: ".....",
-    textBelowCard: "Watch TV?",
-    page: <Television />,
-  },
-  {
     icon: <GiWeightLiftingUp size={50} />,
     title: "ACTIVITIES",
     spaceBeforeBelowCard: "..",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
   },
+
+  {
+    icon: <TvIcon size={50} />,
+    title: "TV",
+    spaceBeforeBelowCard: ".....",
+    textBelowCard: "Watch TV?",
+    page: <Television />,
+  },
+
   {
     icon: <GiFilmSpool size={50} />,
     title: "ENTERTAINMENT",
@@ -355,8 +357,8 @@ const Home = ({ enteredName }) => {
           active={activeCarousel === "componentData"}
           onClick={() => handleCarouselChange("componentData")}
           onTouchStart={() => handleCarouselChange("componentData")}>
-          {centerCardIndex === 0 && <Television ref={tvRef} />}
-          {centerCardIndex === 1 && (
+          {centerCardIndex === 1 && <Television ref={tvRef} />}
+          {centerCardIndex === 0 && (
             <Activities ref={activitiesRef} enteredName={enteredName} />
           )}
           {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}

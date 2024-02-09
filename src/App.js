@@ -89,6 +89,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import LoginSignUp from "./components/UserLogin/LoginSignUp";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [enteredName, setEnteredName] = useState(""); // State to hold enteredName
@@ -107,7 +109,6 @@ function App() {
   return (
     <Router>
       <Routes>
-
         <Route
           path="/"
           element={

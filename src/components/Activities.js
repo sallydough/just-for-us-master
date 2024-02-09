@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
-// import { format } from "date-fns";
-
-// import { css } from "@emotion/react";
-// import { ClipLoader } from "react-spinners";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import moment from 'moment';
 import styled from "styled-components";

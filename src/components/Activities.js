@@ -220,7 +220,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 import { css } from "@emotion/react";
 import { ClipLoader } from "react-spinners";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
@@ -387,7 +387,15 @@ const Activities = React.forwardRef((props, ref) => {
                   <h1>{event.item}</h1>
                   <p className="card-name" style={{ fontSize: 34 }}>
                     {event.startDate ? (
-                      format(event.startDate, "EEEE, MMMM d, yyyy h:mm a", { timeZone: "America/Edmonton" })
+                      event.startDate.toLocaleString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        timeZone: "America/Edmonton"
+                      })
                     ) : (
                       "Date Not Available"
                     )}
@@ -401,37 +409,45 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-
+  
       {isModalOpen && selectedEvent && (
         <div className="overlay">
           <div className="modal">
             <div>
               <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
               <p className="card-name" style={{ fontSize: 50 }}>
-                {selectedEvent.startDate.toLocaleString("en-US", {
-                  timeZone: "America/Edmonton",
-                  hour: "numeric",
-                  minute: "numeric",
-                })}
+                {selectedEvent.startDate ? (
+                  selectedEvent.startDate.toLocaleString("en-US", {
+                    hour: "numeric",
+                    minute: "numeric",
+                    timeZone: "America/Edmonton"
+                  })
+                ) : (
+                  "Date Not Available"
+                )}
               </p>
-
+  
               {/* Conditional rendering based on event availability */}
-              {selectedEvent.startDate > new Date() ? (
+              {new Date() < selectedEvent.startDate ? (
+                <p style={{ fontSize: 50 }}>
+                  Event has not started yet.
+                </p>
+              ) : new Date() > selectedEvent.endDate ? (
+                <p style={{ fontSize: 50 }}>
+                  Event has ended.
+                </p>
+              ) : (
                 <>
                   <button
                     onClick={() => window.open(selectedEvent.zoomLink, '_blank')}
                     style={{ fontSize: 50 }}
                   >
-                    Join Now
+                    Join!
                   </button>
                   <p style={{ fontSize: 50 }}>
-                    Apologies, the event is not available.
+                    Event is happening!
                   </p>
                 </>
-              ) : (
-                <p style={{ fontSize: 50 }}>
-                  Apologies, the event is not available.
-                </p>
               )}
               <button onClick={closeModal}>Close</button>
             </div>
@@ -440,6 +456,159 @@ const Activities = React.forwardRef((props, ref) => {
       )}
     </>
   );
+  
+  
+  
+
+  // return (
+  //   <>
+  //     <div ref={ref} id="activities" className="settings">
+  //       <div className="slider-call-1">
+  //         <div className="slider">
+  //           <Slider {...settings}>
+  //             {events.map((event, idx) => (
+  //               <div
+  //                 key={event.id}
+  //                 onClick={() => navigateToZoomLink(event)}
+  //                 className={idx === cardIndex ? "slide activeSlide" : "slide"}
+  //               >
+  //                 <h1>{event.item}</h1>
+  //                 <p className="card-name" style={{ fontSize: 34 }}>
+  //                   {event.startDate ? (
+  //                     event.startDate.toLocaleString("en-US", {
+  //                       weekday: "long",
+  //                       month: "long",
+  //                       day: "numeric",
+  //                       year: "numeric",
+  //                       hour: "numeric",
+  //                       minute: "numeric",
+  //                       timeZone: "America/Edmonton"
+  //                     })
+  //                   ) : (
+  //                     "Date Not Available"
+  //                   )}
+  //                 </p>
+  //               </div>
+  //             ))}
+  //           </Slider>
+  //         </div>
+  //         <div className="prompt">
+  //           {/* Display other properties if needed */}
+  //         </div>
+  //       </div>
+  //     </div>
+  
+  //     {isModalOpen && selectedEvent && (
+  //       <div className="overlay">
+  //         <div className="modal">
+  //           <div>
+  //             <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
+  //             <p className="card-name" style={{ fontSize: 50 }}>
+  //               {selectedEvent.startDate ? (
+  //                 selectedEvent.startDate.toLocaleString("en-US", {
+  //                   hour: "numeric",
+  //                   minute: "numeric",
+  //                   timeZone: "America/Edmonton"
+  //                 })
+  //               ) : (
+  //                 "Date Not Available"
+  //               )}
+  //             </p>
+  
+  //             {/* Conditional rendering based on event availability */}
+  //             {selectedEvent.startDate <= new Date() && new Date() <= selectedEvent.endDate ? (
+  //             <>
+  //                 <button
+  //                   onClick={() => window.open(selectedEvent.zoomLink, '_blank')}
+  //                   style={{ fontSize: 50 }}
+  //                 >
+  //                   Join Now
+  //                 </button>
+  //                 <p style={{ fontSize: 50 }}>
+  //                   Event is happening now.
+  //                 </p>
+  //               </>
+  //             ) : (
+  //               <p style={{ fontSize: 50 }}>
+  //                 Event has ended.
+  //               </p>
+  //             )}
+  //             <button onClick={closeModal}>Close</button>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )}
+  //   </>
+  // );
+  
+  // return (
+  //   <>
+  //     <div ref={ref} id="activities" className="settings">
+  //       <div className="slider-call-1">
+  //         <div className="slider">
+  //           <Slider {...settings}>
+  //             {events.map((event, idx) => (
+  //               <div
+  //                 key={event.id}
+  //                 onClick={() => navigateToZoomLink(event)}
+  //                 className={idx === cardIndex ? "slide activeSlide" : "slide"}
+  //               >
+  //                 <h1>{event.item}</h1>
+  //                 <p className="card-name" style={{ fontSize: 34 }}>
+  //                   {event.startDate ? (
+  //                     format(event.startDate, "EEEE, MMMM d, yyyy h:mm a", { timeZone: "America/Edmonton" })
+  //                   ) : (
+  //                     "Date Not Available"
+  //                   )}
+  //                 </p>
+  //               </div>
+  //             ))}
+  //           </Slider>
+  //         </div>
+  //         <div className="prompt">
+  //           {/* Display other properties if needed */}
+  //         </div>
+  //       </div>
+  //     </div>
+
+  //     {isModalOpen && selectedEvent && (
+  //       <div className="overlay">
+  //         <div className="modal">
+  //           <div>
+  //             <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
+  //             <p className="card-name" style={{ fontSize: 50 }}>
+  //               {selectedEvent.startDate.toLocalString()("en-US", {
+  //                 timeZone: "America/Edmonton",
+  //                 hour: "numeric",
+  //                 minute: "numeric",
+  //               })}
+  //             </p>
+
+  //             {/* Conditional rendering based on event availability */}
+  //             {selectedEvent.startDate > new Date() ? (
+  //               <>
+  //                 <button
+  //                   onClick={() => window.open(selectedEvent.zoomLink, '_blank')}
+  //                   style={{ fontSize: 50 }}
+  //                 >
+  //                   Join Now
+  //                 </button>
+  //                 <p style={{ fontSize: 50 }}>
+  //                   Apologies, the event is not available.
+  //                 </p>
+  //               </>
+  //             ) : (
+  //               <p style={{ fontSize: 50 }}>
+  //                 Apologies, the event is not available.
+  //               </p>
+  //             )}
+  //             <button onClick={closeModal}>Close</button>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )}
+  //   </>
+  // );
 });
 
 export default Activities;

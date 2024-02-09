@@ -199,6 +199,29 @@ svg.arrow-down {
   opacity: 1;
 }
 
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 8rem;
+}
+
+.spinner {
+  border: 8px solid rgba(0, 0, 0, 0.3);
+  border-left-color: #151515;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* contacts.css or your custom style sheet */
 /* .custom-modal {
   background-color: rgb(246, 226, 177);

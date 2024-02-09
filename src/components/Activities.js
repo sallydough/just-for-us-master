@@ -274,6 +274,16 @@ const Activities = React.forwardRef((props, ref) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [cardIndex, setCardIndex] = useState(0);
 
+  function parseDate(str) {
+    const [dateparts, timeparts] = str.split(" ");
+    const [year, month, day] = dateparts.split("-");
+    const [hours = 0, minutes = 0, seconds = 0] = timeparts?.split(":") ?? [];
+    // Treats the string as UTC, but you can remove the `Date.UTC` part and use
+    // `new Date` directly to treat the string as local time
+    return new Date(Date.UTC(+year, +month - 1, +day, +hours, +minutes, +seconds));
+}
+
+
   const navigateToZoomLink = (event) => {
     setSelectedEvent(event);
     setIsModalOpen(true);
@@ -308,14 +318,18 @@ const Activities = React.forwardRef((props, ref) => {
 
             const matchFirstName = lowerFirstName.includes(lowerEnteredName);
             const matchLastName = lowerLastName.includes(lowerEnteredName);
-
+            console.log("I am here and alive hear me roar")
+console.log(moment(item.startdatestring.replace(/-/g, '/')));
             return matchFirstName || matchLastName;
+            
           })
-          .map((item) => ({
+          .map((item) => (
+            
+            {
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDate: moment(new Date(item.startdatestring)).format('dddd MMMM Do, h:mm a'),
+            startDate:moment(item.startdatestring.replace(/-/g, '/')),
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"

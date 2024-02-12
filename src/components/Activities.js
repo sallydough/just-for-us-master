@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import axios from "axios";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
-import moment from 'moment';
+import moment from "moment";
 import styled from "styled-components";
 import "./activities.css";
 
@@ -46,9 +46,10 @@ const Activities = React.forwardRef((props, ref) => {
     const [hours = 0, minutes = 0, seconds = 0] = timeparts?.split(":") ?? [];
     // Treats the string as UTC, but you can remove the `Date.UTC` part and use
     // `new Date` directly to treat the string as local time
-    return new Date(Date.UTC(+year, +month - 1, +day, +hours, +minutes, +seconds));
-}
-
+    return new Date(
+      Date.UTC(+year, +month - 1, +day, +hours, +minutes, +seconds)
+    );
+  }
 
   const navigateToZoomLink = (event) => {
     setSelectedEvent(event);
@@ -84,18 +85,17 @@ const Activities = React.forwardRef((props, ref) => {
 
             const matchFirstName = lowerFirstName.includes(lowerEnteredName);
             const matchLastName = lowerLastName.includes(lowerEnteredName);
-            console.log("I am here and alive hear me roar")
-console.log(moment(item.startdatestring.replace(/-/g, '/')));
+            console.log("I am here and alive hear me roar");
+            console.log(moment(item.startdatestring.replace(/-/g, "/")));
             return matchFirstName || matchLastName;
-            
           })
-          .map((item) => (
-            
-            {
+          .map((item) => ({
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDate:moment(item.startdatestring.replace(/-/g, '/')).format('dddd, MMMM Do, h:mm a'),
+            startDate: moment(item.startdatestring.replace(/-/g, "/")).format(
+              "dddd, MMMM Do, h:mm a"
+            ),
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
@@ -222,12 +222,12 @@ console.log(moment(item.startdatestring.replace(/-/g, '/')));
                     Join Now
                   </button>
                   <p style={{ fontSize: 50 }}>
-                    Apologies, the event is not available.
+                    Apologies, the event is not available at present.
                   </p>
                 </>
               ) : (
                 <p style={{ fontSize: 50 }}>
-                  Apologies, the event is not available.
+                  Apologies, the event is not available at present.
                 </p>
               )}
               <button onClick={closeModal}>Close</button>

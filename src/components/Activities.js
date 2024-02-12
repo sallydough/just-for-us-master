@@ -225,7 +225,7 @@ const Activities = React.forwardRef((props, ref) => {
                 </>
               ) : (
                 <p style={{ fontSize: 50 }}>
-                  Apologies, the event is not availabe .
+                  Apologies, the event is not available at present.
                 </p>
               )}
               <button onClick={closeModal}>Close</button>

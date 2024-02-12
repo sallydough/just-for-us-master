@@ -85,7 +85,7 @@ const Activities = React.forwardRef((props, ref) => {
 
             const matchFirstName = lowerFirstName.includes(lowerEnteredName);
             const matchLastName = lowerLastName.includes(lowerEnteredName);
-            console.log("I am here and alive hear me roar");
+           
             console.log(moment(item.startdatestring.replace(/-/g, "/")));
             return matchFirstName || matchLastName;
           })
@@ -239,12 +239,12 @@ const Activities = React.forwardRef((props, ref) => {
                     Apologies, the event is not available at present.
                   </p>
                 </>
-              ) : (
+              )} : (
                 <p style={{ fontSize: 50 }}>
                   Apologies, the event is not available at present.
                 </p>
 
-              )}
+              )
               <button onClick={closeModal}>Close</button>
             </div>
           </div>

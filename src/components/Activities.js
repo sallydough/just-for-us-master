@@ -224,9 +224,9 @@ const Activities = React.forwardRef((props, ref) => {
                     style={{ fontSize: 50 }}>
                     Join Now
                   </button>
-                  <p style={{ fontSize: 50 }}>
+                  {/* <p style={{ fontSize: 50 }}>
                     Apologies, the event is not available at present.
-                  </p>
+                  </p> */}
                 </>
               )}
               {/* :  */}

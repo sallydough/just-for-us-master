@@ -19,8 +19,8 @@ import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
 import Activities from "../components/Activities";
 // Imports for react-toastify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -194,19 +194,21 @@ const PromptDiv = styled.h1`
 
 const cardData = [
   {
-    icon: <TvIcon size={50} />,
-    title: "TV",
-    spaceBeforeBelowCard: ".....",
-    textBelowCard: "Watch TV?",
-    page: <Television />,
-  },
-  {
     icon: <GiWeightLiftingUp size={50} />,
     title: "ACTIVITIES",
     spaceBeforeBelowCard: "..",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
   },
+
+  {
+    icon: <TvIcon size={50} />,
+    title: "TV",
+    spaceBeforeBelowCard: ".....",
+    textBelowCard: "Watch TV?",
+    page: <Television />,
+  },
+
   {
     icon: <GiFilmSpool size={50} />,
     title: "ENTERTAINMENT",
@@ -284,12 +286,12 @@ const Home = ({ enteredName }) => {
     return () => {};
   }, []);
 
-    // react-toastify function that invokes a notification
-    const showToastMessage = () => {
-      toast.success("Your Zoom Activity starts in 10 minutes. Please Join Now.", {
-        position: toast.POSITION,
-      });
-    };
+  // react-toastify function that invokes a notification
+  const showToastMessage = () => {
+    toast.success("Your Zoom Activity starts in 10 minutes. Please Join Now.", {
+      position: toast.POSITION,
+    });
+  };
 
   return (
     <>
@@ -302,7 +304,8 @@ const Home = ({ enteredName }) => {
                 color: "#333",
                 fontSize: "2rem",
                 fontWeight: "bold",
-              }}>
+              }}
+            >
               Welcome
             </span>
           </div>
@@ -314,26 +317,30 @@ const Home = ({ enteredName }) => {
                 fontWeight: "bold",
                 textTransform: "uppercase",
                 color: "#0066cc",
-              }}>
+              }}
+            >
               {enteredName}
             </span>
           </div>
-        </WelcomeWrapper>    
+        </WelcomeWrapper>
+        {/* Toastify notifications */}
         <div>
-      <button onClick={showToastMessage}>Notify</button>
-      <ToastContainer position="top-right" />
-    </div>
+          <button onClick={showToastMessage}>Notify</button>
+          <ToastContainer position="top-right" />
+        </div>
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper
             active={activeCarousel === "cardData"}
             onClick={() => handleCarouselChange("cardData")}
-            onTouchStart={() => handleCarouselChange("cardData")}>
+            onTouchStart={() => handleCarouselChange("cardData")}
+          >
             <CarouselDivBox active={activeCarousel === "cardData"}>
               <Slider
                 {...settings}
                 ref={sliderRef}
-                beforeChange={() => handleCarouselChange("cardData")}>
+                beforeChange={() => handleCarouselChange("cardData")}
+              >
                 {cardData.map((card, index) => (
                   <CardColumn key={index}>
                     <StyledProfileCard
@@ -368,8 +375,8 @@ const Home = ({ enteredName }) => {
           active={activeCarousel === "componentData"}
           onClick={() => handleCarouselChange("componentData")}
           onTouchStart={() => handleCarouselChange("componentData")}>
-          {centerCardIndex === 0 && <Television ref={tvRef} />}
-          {centerCardIndex === 1 && (
+          {centerCardIndex === 1 && <Television ref={tvRef} />}
+          {centerCardIndex === 0 && (
             <Activities ref={activitiesRef} enteredName={enteredName} />
           )}
           {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}

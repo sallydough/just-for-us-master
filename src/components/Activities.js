@@ -6,6 +6,8 @@ import moment from 'moment';
 import styled from "styled-components";
 import "./activities.css";
 
+//test
+
 // const CustomSlider = ({ events, navigateToZoomLink }) => {
 const CustomArrowButton = styled.div`
   width: 80px;

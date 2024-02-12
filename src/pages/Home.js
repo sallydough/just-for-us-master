@@ -18,6 +18,7 @@ import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
 import Activities from "../components/Activities";
+// import Notification from "../components/Notification/Notification";
 // Imports for react-toastify
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -325,9 +326,9 @@ const Home = ({ enteredName }) => {
         </WelcomeWrapper>
         {/* Toastify notifications */}
         {/* <div>
-          <button onClick={showToastMessage}>Notify</button>
-          <ToastContainer position="top-right" />
-        </div> */}
+      <ToastContainer />
+      <Notification startTime={startTime} />
+    </div>  */}
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper

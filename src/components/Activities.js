@@ -179,8 +179,7 @@ const Activities = React.forwardRef((props, ref) => {
         <div className="slider-call-1">
           <div className="slider">
           <ToastContainer 
-          position="top-right"
-          autoClose={7000} />
+          position="top-right" />
             <Slider {...settings}>
               {events.map((event, idx) => (
                 <div

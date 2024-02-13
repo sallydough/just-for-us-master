@@ -214,55 +214,41 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+      
+      {isModalOpen && selectedEvent && (
+  <div className="overlay">
+    <div className="modal">
+      <div>
+        <h1>{selectedEvent.item}</h1>
+        <p className="card-name">
+          {selectedEvent.startDate ? (
+            selectedEvent.startDate.toLocaleString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              timeZone: "America/Edmonton"
+            })
+          ) : (
+            "Date Not Available"
+          )}
+        </p>
+        {/* Conditional rendering based on event availability */}
+        {new Date() >= selectedEvent.startDate && new Date() <= selectedEvent.endDate ? (
+          <button
+            onClick={() => window.open(selectedEvent.zoomLink, "_blank")}
+            style={{ fontSize: 50 }}>
+            Join Now
+          </button>
+        ) : (
+          <p>{new Date() < selectedEvent.startDate ? 'Event Not Available Yet' : 'Event Ended'}</p>
+        )}
+        <button onClick={closeModal}>Close</button>
+      </div>
+    </div>
+  </div>
+)}
+</>
+);
 
-   {isModalOpen && selectedEvent && (
-        <div className="overlay">
-          <div className="modal">
-            <div>
-              <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
-              <p className="card-name" style={{ fontSize: 50 }}>
-                {selectedEvent.startDate
-                  ? selectedEvent.startDate.toLocaleString("en-US", {
-                      hour: "numeric",
-                      minute: "numeric",
-                      timeZone: "America/Edmonton",
-                    })
-                  : "Date Not Available"}
-              </p>
-
-              {/* Conditional rendering based on event availability */}
-              {new Date() < selectedEvent.startDate ? (
-                <p style={{ fontSize: 50 }}>Event has not started yet.</p>
-              ) : new Date() > selectedEvent.endDate ? (
-                <p style={{ fontSize: 50 }}>Event has ended.</p>
-              ) : (
-                <>
-                  <button
-                    onClick={() =>
-                      window.open(selectedEvent.zoomLink, "_blank")
-                    }
-                    style={{ fontSize: 50 }}>
-                    Join Now
-                  </button>
-                  {/* <p style={{ fontSize: 50 }}>
-                    Apologies, the event is not available at present.
-                  </p> */}
-                </>
-              )}
-              {/* :  */}
-              {/* (
-                <p style={{ fontSize: 50 }}>
-                  Apologies, the event is not available at present.
-                </p>
-
-              ) */}
-              <button onClick={closeModal}>Close</button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
 });
 
 export default Activities;

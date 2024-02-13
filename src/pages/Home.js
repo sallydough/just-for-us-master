@@ -19,6 +19,7 @@ import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
 import Activities from "../components/Activities";
 
+
 const HomeContainer = styled.div`
   position: relative;
   top: 80px;

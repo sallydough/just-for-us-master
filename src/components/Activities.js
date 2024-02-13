@@ -234,7 +234,8 @@ const Activities = React.forwardRef((props, ref) => {
         {/* Conditional rendering based on event availability */}
         {new Date() >= selectedEvent.startDate && new Date() <= selectedEvent.endDate ? (
           <button
-            onClick={() => window.open(selectedEvent.zoomLink, "_blank")}
+            onClick={() => 
+              window.open(selectedEvent.zoomLink, "_blank")}
             style={{ fontSize: 50 }}>
             Join Now
           </button>

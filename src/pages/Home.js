@@ -18,10 +18,6 @@ import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
 import Activities from "../components/Activities";
-// import Notification from "../components/Notification/Notification";
-// Imports for react-toastify
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -287,12 +283,6 @@ const Home = ({ enteredName }) => {
     return () => {};
   }, []);
 
-  // react-toastify function that invokes a notification
-  // const showToastMessage = () => {
-  //   toast.success("Your Zoom Activity starts in 10 minutes. Please Join Now.", {
-  //     position: toast.POSITION,
-  //   });
-  // };
 
   return (
     <>
@@ -324,11 +314,6 @@ const Home = ({ enteredName }) => {
             </span>
           </div>
         </WelcomeWrapper>
-        {/* Toastify notifications */}
-        {/* <div>
-      <ToastContainer />
-      <Notification startTime={startTime} />
-    </div>  */}
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper

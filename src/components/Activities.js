@@ -5,8 +5,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import moment from "moment";
 import styled from "styled-components";
 import { toast } from "react-toastify";
-import { ToastContainer } from 'react-toastify';
 import "./activities.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const CustomSlider = ({ events, navigateToZoomLink }) => {
 const CustomArrowButton = styled.div`
@@ -177,9 +178,8 @@ const Activities = React.forwardRef((props, ref) => {
     <>
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
+        <ToastContainer position="top-right" />
           <div className="slider">
-          <ToastContainer 
-          position="top-right" />
             <Slider {...settings}>
               {events.map((event, idx) => (
                 <div
@@ -248,6 +248,7 @@ const Activities = React.forwardRef((props, ref) => {
 )}
 </>
 );
+
 });
 
 export default Activities;

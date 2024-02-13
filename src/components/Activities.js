@@ -82,14 +82,13 @@ const Activities = React.forwardRef((props, ref) => {
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDate: moment(item.startdatestring.replace(/-/g, "/")).format(
-              "dddd, MMMM Do, h:mm a"
-            ),
+            startDate: moment(item.startdatestring.replace(/-/g, "/")).toDate(), // Convert to Date object
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
                 : null,
           }));
+
         // Sort events by startDate in ascending order
         eventData.sort((a, b) => a.startDate - b.startDate);
       } catch (error) {

@@ -74,7 +74,7 @@ const Activities = React.forwardRef((props, ref) => {
 
             const matchFirstName = lowerFirstName.includes(lowerEnteredName);
             const matchLastName = lowerLastName.includes(lowerEnteredName);
-           
+
             console.log(moment(item.startdatestring.replace(/-/g, "/")));
             return matchFirstName || matchLastName;
           })
@@ -90,6 +90,8 @@ const Activities = React.forwardRef((props, ref) => {
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
                 : null,
           }));
+        // Sort events by startDate in ascending order
+        eventData.sort((a, b) => a.startDate - b.startDate);
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -187,37 +189,30 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-  
+
       {isModalOpen && selectedEvent && (
         <div className="overlay">
           <div className="modal">
             <div>
               <h1 style={{ fontSize: 50 }}>{selectedEvent.item}</h1>
               <p className="card-name" style={{ fontSize: 50 }}>
-                {selectedEvent.startDate ? (
-                  selectedEvent.startDate.toLocaleString("en-US", {
-                    hour: "numeric",
-                    minute: "numeric",
-                    timeZone: "America/Edmonton"
-                  })
-                ) : (
-                  "Date Not Available"
-                )}
+                {selectedEvent.startDate
+                  ? selectedEvent.startDate.toLocaleString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      timeZone: "America/Edmonton",
+                    })
+                  : "Date Not Available"}
               </p>
-  
+
               {/* Conditional rendering based on event availability */}
               {new Date() < selectedEvent.startDate ? (
-                <p style={{ fontSize: 50 }}>
-                  Event has not started yet.
-                </p>
+                <p style={{ fontSize: 50 }}>Event has not started yet.</p>
               ) : new Date() > selectedEvent.endDate ? (
-                <p style={{ fontSize: 50 }}>
-                  Event has ended.
-                </p>
+                <p style={{ fontSize: 50 }}>Event has ended.</p>
               ) : (
                 <>
                   <button
-
                     onClick={() =>
                       window.open(selectedEvent.zoomLink, "_blank")
                     }

@@ -166,7 +166,7 @@ const Activities = React.forwardRef((props, ref) => {
                   </p> */}
                   {/* <p>{event.startDateString}</p> */}
                   {
-                    <p className="card-name" style={{ fontSize: 34 }}>
+                    <p className="card-name" style={{ fontSize: 25 }}>
                       {event.startDate.toLocaleString("en-US", {
                         timeZone: "America/Edmonton",
                         weekday: "long",

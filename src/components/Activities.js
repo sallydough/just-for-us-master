@@ -6,8 +6,8 @@ import moment from "moment";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import "./activities.css";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // const CustomSlider = ({ events, navigateToZoomLink }) => {
 const CustomArrowButton = styled.div`
@@ -103,7 +103,8 @@ const Activities = React.forwardRef((props, ref) => {
         // Set the start time to 10 minutes before the first event
         if (eventData.length > 0) {
           const firstEventStartTime = eventData[0].startDate.getTime();
-          const tenMinutesBeforeFirstEvent = firstEventStartTime - 10 * 60 * 1000; // 10 minutes in milliseconds
+          const tenMinutesBeforeFirstEvent =
+            firstEventStartTime - 10 * 60 * 1000; // 10 minutes in milliseconds
           setStartTime(tenMinutesBeforeFirstEvent);
         }
       } catch (error) {
@@ -124,7 +125,10 @@ const Activities = React.forwardRef((props, ref) => {
     if (startTime) {
       const tenMinutesBeforeStartTime = startTime - Date.now();
       if (tenMinutesBeforeStartTime > 0) {
-        const notificationTimeout = setTimeout(showToastMessage, tenMinutesBeforeStartTime);
+        const notificationTimeout = setTimeout(
+          showToastMessage,
+          tenMinutesBeforeStartTime
+        );
         return () => clearTimeout(notificationTimeout);
       }
     }
@@ -178,7 +182,7 @@ const Activities = React.forwardRef((props, ref) => {
     <>
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
-        <ToastContainer position="top-right" />
+          <ToastContainer position="top-right" />
           <div className="slider">
             <Slider {...settings}>
               {events.map((event, idx) => (
@@ -214,42 +218,45 @@ const Activities = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      
-      {isModalOpen && selectedEvent && (
-  <div className="overlay">
-    <div className="modal">
-      <div>
-        <h1>{selectedEvent.item}</h1>
-        <p className="card-name">
-          {selectedEvent.startDate ? (
-            selectedEvent.startDate.toLocaleString("en-US", {
-              hour: "numeric",
-              minute: "numeric",
-              timeZone: "America/Edmonton"
-            })
-          ) : (
-            "Date Not Available"
-          )}
-        </p>
-        {/* Conditional rendering based on event availability */}
-        {new Date() >= selectedEvent.startDate && new Date() <= selectedEvent.endDate ? (
-          <button
-            onClick={() => 
-              window.open(selectedEvent.zoomLink, "_blank")}
-            style={{ fontSize: 50 }}>
-            Join Now
-          </button>
-        ) : (
-          <p>{new Date() < selectedEvent.startDate ? 'Event Not Available Yet' : 'Event Ended'}</p>
-        )}
-        <button onClick={closeModal}>Close</button>
-      </div>
-    </div>
-  </div>
-)}
-</>
-);
 
+      {isModalOpen && selectedEvent && (
+        <div className="overlay">
+          <div className="modal">
+            <div>
+              <h1>{selectedEvent.item}</h1>
+              <p className="card-name">
+                {selectedEvent.startDate
+                  ? selectedEvent.startDate.toLocaleString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      timeZone: "America/Edmonton",
+                    })
+                  : "Date Not Available"}
+              </p>
+              {/* Conditional rendering based on event availability */}
+              {new Date() >= selectedEvent.startDate &&
+              (!selectedEvent.endDate ||
+                new Date() <= selectedEvent.endDate) ? (
+                <button
+                  onClick={() => window.open(selectedEvent.zoomLink, "_blank")}
+                  style={{ fontSize: 50 }}>
+                  Join Now
+                </button>
+              ) : (
+                <p>
+                  {new Date() < selectedEvent.startDate
+                    ? "Event Not Available Yet"
+                    : "Event Ended"}
+                </p>
+              )}
+
+              <button onClick={closeModal}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 });
 
 export default Activities;

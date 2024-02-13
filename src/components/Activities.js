@@ -247,7 +247,7 @@ const Activities = React.forwardRef((props, ref) => {
   </div>
 )}
 </>
-);s
+);
 });
 
 export default Activities;

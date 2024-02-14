@@ -92,16 +92,16 @@ const CardColumn = styled.div`
 `;
 
 const CustomArrowButton = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: absolute;
   top: 40%;
-  left:940px;
-  margin-left: 40px;
+  left:915px;
+  margin-left: 60px;
   transform: translateY(-50%);
   z-index: 1;
 

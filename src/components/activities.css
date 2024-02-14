@@ -31,24 +31,6 @@
   position: fixed;
 }
 
-@media screen and (min-width: 768px) {
-  #contacts {
-    padding: 20px;
-  }
-
-  .slider {
-    width: 80%;
-  }
-
-  .slide {
-    height: 22rem;
-    padding: 4rem 3rem;
-  }
-
-  .slide h1 {
-    font-size: 40px;
-  }
-}
 /* change centering between carousel slides */
 .slick-slide > div {
   display: flex;
@@ -62,7 +44,7 @@
 /* change centering of carousel div in relation to whole page */
 .slider {
   display: block;
-  margin: 5px auto;
+  margin: 3px auto;
   width: 80%;
   padding: 10px;
 }
@@ -76,16 +58,16 @@
   transition: transform 300ms;
   opacity: 1;
   gap: 0.4rem;
-  height: 18rem;
-  padding: 2rem 2rem;
+  height: 17rem;
+  padding: 3rem 2rem 1rem 2rem;
   background-color: #f09030;
   border-radius: 3rem;
   position: relative;
 }
 
 .slide h1 {
-  padding: 20px;
-  font-size: 35px;
+  padding: 10px;
+  font-size: 33px;
 }
 .item-container {
   display: flex;

@@ -124,3 +124,7 @@ svg.arrow-down {
   position: absolute;
   top: 85%;
 }
+
+.name-lights {
+  font-size: 20px;
+}

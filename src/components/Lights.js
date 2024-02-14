@@ -285,9 +285,9 @@ const Lights = () => {
                     onClick={toggleColor}
                   />
                 ) : (
-                  <BsLightbulb size={130} color="white" onClick={toggleColor} />
+                  <BsLightbulb size={100} color="white" onClick={toggleColor} />
                 )}
-                <h1 className="card-name">{card.name}</h1>
+                <h1 className="name-lights">{card.name}</h1>
               </div>
             ))}
           </Slider>

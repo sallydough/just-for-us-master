@@ -22,7 +22,7 @@ import Activities from "../components/Activities";
 
 const HomeContainer = styled.div`
   position: relative;
-  top: 80px;
+  top: 65px;
   left: 0;
   right: 0;
   display: flex;
@@ -38,7 +38,7 @@ const WelcomeWrapper = styled.div`
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 980px;
   max-height: 700px;
   justify-content: center;
   display: unset;
@@ -100,6 +100,8 @@ const CustomArrowButton = styled.div`
   cursor: pointer;
   position: absolute;
   top: 40%;
+  left:940px;
+  margin-left: 40px;
   transform: translateY(-50%);
   z-index: 1;
 
@@ -192,9 +194,9 @@ const PromptDiv = styled.h1`
 
 const cardData = [
   {
-    icon: <GiWeightLiftingUp size={50} />,
+    icon: <GiWeightLiftingUp size={55} />,
     title: "ACTIVITIES",
-    spaceBeforeBelowCard: "..",
+    spaceBeforeBelowCard: "",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
   },
@@ -202,13 +204,13 @@ const cardData = [
   {
     icon: <TvIcon size={50} />,
     title: "TV",
-    spaceBeforeBelowCard: ".....",
+    spaceBeforeBelowCard: ". .",
     textBelowCard: "Watch TV?",
     page: <Television />,
   },
 
   {
-    icon: <GiFilmSpool size={50} />,
+    icon: <GiFilmSpool size={52} />,
     title: "ENTERTAINMENT",
     spaceBeforeBelowCard: "",
     textBelowCard: "Watch Entertainment?",
@@ -217,20 +219,20 @@ const cardData = [
   {
     icon: <IoMdPhotos size={50} />,
     title: "GALLERY",
-    spaceBeforeBelowCard: ". .",
+    spaceBeforeBelowCard: ".",
     textBelowCard: "View Gallery?",
   },
   {
     icon: <FaPhoneAlt size={50} />,
     title: "VIDEO CALL",
-    spaceBeforeBelowCard: "..",
+    spaceBeforeBelowCard: "",
     textBelowCard: "Make a Video Call?",
     page: <Contacts />,
   },
   {
     icon: <FaLightbulb size={50} />,
     title: "LIGHTS",
-    spaceBeforeBelowCard: "...",
+    spaceBeforeBelowCard: ".",
     textBelowCard: "Change Lights?",
     page: <Lights />,
   },

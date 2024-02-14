@@ -11,15 +11,15 @@ const ProfileCardLink = styled(Link)`
 `;
 
 const ProfileCardContainer = styled.div`
-  width: ${(props) => (props.active ? "130px" : "120px")};
+  width: ${(props) => (props.active ? "133px" : "133px")};
   height: ${(props) => (props.active ? "130px" : "130px")};
   background: ${(props) =>
     props.active ? "#f3b717" : props.backgroundColor || "#7F8181"};
   border-radius: ${(props) =>
     props.active ? "30%" : props.borderRadius || "38px"};
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  margin: 30px 40px;
-  padding: 20px;
+  margin: 30px 20px;
+  padding: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;

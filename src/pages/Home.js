@@ -4,7 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
-import { ChevronLeftIcon, ChevronRightIcon, TvIcon } from "../components/icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  GardenLoftIcon,
+  TvIcon,
+} from "../components/icons";
 import CallHelpButtonComponent from "../components/CallHelpButton";
 import Contacts from "../components/Contacts";
 import { GiFilmSpool } from "react-icons/gi";
@@ -19,6 +24,9 @@ import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
 import Activities from "../components/Activities";
 
+// Toastify imports
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -33,7 +41,8 @@ const HomeContainer = styled.div`
 const WelcomeWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
-  align-items: center;
+  align-items: right;
+  margin-left: 75rem;
 `;
 
 const CarouselWrapper = styled.div`
@@ -100,7 +109,7 @@ const CustomArrowButton = styled.div`
   cursor: pointer;
   position: absolute;
   top: 40%;
-  left:915px;
+  left: 915px;
   margin-left: 60px;
   transform: translateY(-50%);
   z-index: 1;
@@ -286,10 +295,13 @@ const Home = ({ enteredName }) => {
     return () => {};
   }, []);
 
-
   return (
     <>
       <section id="home">
+        <div className="garden-logo">
+          {" "}
+          <GardenLoftIcon />
+        </div>
         {/* Wrapper for Welcome and username */}
         <WelcomeWrapper>
           <div>
@@ -298,8 +310,7 @@ const Home = ({ enteredName }) => {
                 color: "#333",
                 fontSize: "2rem",
                 fontWeight: "bold",
-              }}
-            >
+              }}>
               Welcome
             </span>
           </div>
@@ -311,25 +322,23 @@ const Home = ({ enteredName }) => {
                 fontWeight: "bold",
                 textTransform: "uppercase",
                 color: "#0066cc",
-              }}
-            >
+              }}>
               {enteredName}
             </span>
           </div>
         </WelcomeWrapper>
+        <ToastContainer position="top-right" sound="alert.mp3" />
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper
             active={activeCarousel === "cardData"}
             onClick={() => handleCarouselChange("cardData")}
-            onTouchStart={() => handleCarouselChange("cardData")}
-          >
+            onTouchStart={() => handleCarouselChange("cardData")}>
             <CarouselDivBox active={activeCarousel === "cardData"}>
               <Slider
                 {...settings}
                 ref={sliderRef}
-                beforeChange={() => handleCarouselChange("cardData")}
-              >
+                beforeChange={() => handleCarouselChange("cardData")}>
                 {cardData.map((card, index) => (
                   <CardColumn key={index}>
                     <StyledProfileCard

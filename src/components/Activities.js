@@ -32,6 +32,7 @@ const Spinner = () => (
   </div>
 );
 
+// shows toast message notification and position
 const showToastMessage = () => {
   toast.success("Your Zoom Activity starts in 10 minutes. Please Join Now.", {
     position: toast.POSITION,

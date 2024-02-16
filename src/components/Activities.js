@@ -4,12 +4,8 @@ import axios from "axios";
 import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import moment from "moment";
 import styled from "styled-components";
-import { toast } from "react-toastify";
 import "./activities.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-// const CustomSlider = ({ events, navigateToZoomLink }) => {
 const CustomArrowButton = styled.div`
   width: 80px;
   height: 80px;
@@ -26,18 +22,12 @@ const CustomArrowButton = styled.div`
     transform: translateY(-50%), scale(0.95);
   }
 `;
+
 const Spinner = () => (
   <div className="spinner-container">
     <div className="spinner"></div>
   </div>
 );
-
-// shows toast message notification and position
-const showToastMessage = () => {
-  toast.success("Your Zoom Activity starts in 10 minutes. Please Join Now.", {
-    position: toast.POSITION,
-  });
-};
 
 const Activities = React.forwardRef((props, ref) => {
   const { enteredName } = props;
@@ -47,7 +37,6 @@ const Activities = React.forwardRef((props, ref) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [cardIndex, setCardIndex] = useState(0);
-  const [startTime, setStartTime] = useState(null);
 
   const navigateToZoomLink = (event) => {
     setSelectedEvent(event);
@@ -84,30 +73,20 @@ const Activities = React.forwardRef((props, ref) => {
             const matchFirstName = lowerFirstName.includes(lowerEnteredName);
             const matchLastName = lowerLastName.includes(lowerEnteredName);
 
-            console.log(moment(item.startdatestring.replace(/-/g, "/")));
             return matchFirstName || matchLastName;
           })
           .map((item) => ({
             id: item.signupid,
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
-            startDate: moment(item.startdatestring.replace(/-/g, "/")).toDate(), // Convert to Date object
+            startDate: moment(item.startdatestring.replace(/-/g, "/")).toDate(),
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
                 : null,
           }));
 
-        // Sort events by startDate in ascending order
         eventData.sort((a, b) => a.startDate - b.startDate);
-
-        // Set the start time to 10 minutes before the first event
-        if (eventData.length > 0) {
-          const firstEventStartTime = eventData[0].startDate.getTime();
-          const tenMinutesBeforeFirstEvent =
-            firstEventStartTime - 10 * 60 * 1000; // 10 minutes in milliseconds
-          setStartTime(tenMinutesBeforeFirstEvent);
-        }
       } catch (error) {
         console.error("Error fetching signed-up activities:", error.message);
         setError(
@@ -121,27 +100,6 @@ const Activities = React.forwardRef((props, ref) => {
 
     fetchEvents();
   }, [enteredName]);
-
-  useEffect(() => {
-    if (startTime) {
-      const tenMinutesBeforeStartTime = startTime - Date.now();
-      if (tenMinutesBeforeStartTime > 0) {
-        const notificationTimeout = setTimeout(
-          showToastMessage,
-          tenMinutesBeforeStartTime
-        );
-        return () => clearTimeout(notificationTimeout);
-      }
-    }
-  }, [startTime]);
-
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
 
   const CustomNextArrow = ({ onClick }) => (
     <CustomArrowButton
@@ -179,11 +137,18 @@ const Activities = React.forwardRef((props, ref) => {
     beforeChange: (current, next) => setCardIndex(next),
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
     <>
       <div ref={ref} id="activities" className="settings">
         <div className="slider-call-1">
-          <ToastContainer position="top-right" />
           <div className="slider">
             <Slider {...settings}>
               {events.map((event, idx) => (
@@ -192,24 +157,17 @@ const Activities = React.forwardRef((props, ref) => {
                   onClick={() => navigateToZoomLink(event)}
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   <h1>{event.item}</h1>
-
-                  {/* <p className="card-name" style={{ fontSize: 20 }}>
-                    {event.name}
-                  </p> */}
-                  {/* <p>{event.startDateString}</p> */}
-                  {
-                    <p className="card-name" style={{ fontSize: 25 }}>
-                      {event.startDate.toLocaleString("en-US", {
-                        timeZone: "America/Edmonton",
-                        weekday: "long",
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                        hour: "numeric",
-                        minute: "numeric",
-                      })}
-                    </p>
-                  }
+                  <p className="card-name" style={{ fontSize: 25 }}>
+                    {event.startDate.toLocaleString("en-US", {
+                      timeZone: "America/Edmonton",
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                    })}
+                  </p>
                 </div>
               ))}
             </Slider>
@@ -234,7 +192,6 @@ const Activities = React.forwardRef((props, ref) => {
                     })
                   : "Date Not Available"}
               </p>
-              {/* Conditional rendering based on event availability */}
               {new Date() >= selectedEvent.startDate &&
               (!selectedEvent.endDate ||
                 new Date() <= selectedEvent.endDate) ? (

@@ -41,8 +41,7 @@ const HomeContainer = styled.div`
 const WelcomeWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
-  align-items: right;
-  margin-left: 64rem;
+  justify-content: flex-end;
 `;
 
 const CarouselWrapper = styled.div`

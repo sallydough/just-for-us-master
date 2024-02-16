@@ -42,7 +42,9 @@ const WelcomeWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
   align-items: right;
-  margin-left: 75rem;
+
+  margin-left: 64rem;
+
 `;
 
 const CarouselWrapper = styled.div`

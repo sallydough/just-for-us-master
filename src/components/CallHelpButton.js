@@ -7,18 +7,18 @@ import TelephoneIcon from "./icons/TelephoneIcon";
 // import { FaPlus } from "react-icons/fa";
 
 // handle Help Button
-const handleHelpVideo = () => {
-  const phoneNumber = "+14036201992";
-  const userChoice = window.confirm("Do you want to call or send an SMS?");
+// const handleHelpVideo = () => {
+//   const phoneNumber = "+14036201992";
+//   const userChoice = window.confirm("Do you want to call or send an SMS?");
 
-  if (userChoice) {
-    window.location.href = `tel:${phoneNumber}`;
-  } else {
-    window.location.href = `sms:${phoneNumber}`;
-  }
-  const telUrl = `tel:${phoneNumber}`;
-  window.location.href = telUrl;
-};
+//   if (userChoice) {
+//     window.location.href = `tel:${phoneNumber}`;
+//   } else {
+//     window.location.href = `sms:${phoneNumber}`;
+//   }
+//   const telUrl = `tel:${phoneNumber}`;
+//   window.location.href = telUrl;
+// };
 
 const StyledButtonAlignment = styled(Typography)`
   margin-top: 30px;
@@ -142,7 +142,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
   };
 
   const handleConfirmVideo = () => {
-    handleHelpVideo();
+    // handleHelpVideo();
     handleConfirm();
   };
 

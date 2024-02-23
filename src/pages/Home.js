@@ -108,8 +108,8 @@ const CustomArrowButton = styled.div`
   cursor: pointer;
   position: absolute;
   top: 40%;
-  left: 915px;
-  margin-left: 60px;
+  left: 880px;
+  margin-left: 80px;
   transform: translateY(-50%);
   z-index: 1;
 

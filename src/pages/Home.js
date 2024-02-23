@@ -25,8 +25,8 @@ import Television from "../components/Tv";
 import Activities from "../components/Activities";
 
 // Toastify imports
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -326,7 +326,7 @@ const Home = ({ enteredName }) => {
             </span>
           </div>
         </WelcomeWrapper>
-        <ToastContainer position="top-right" sound="alert.mp3" />
+        {/* <ToastContainer position="top-right" sound="alert.mp3" /> */}
         <HomeContainer disableHover={disableHover}>
           {/* Card Carousel */}
           <CarouselWrapper

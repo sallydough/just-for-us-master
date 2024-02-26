@@ -7,18 +7,18 @@ import TelephoneIcon from "./icons/TelephoneIcon";
 // import { FaPlus } from "react-icons/fa";
 
 // handle Help Button
-const handleHelpVideo = () => {
-  const phoneNumber = "+14036201992";
-  const userChoice = window.confirm("Do you want to call or send an SMS?");
+// const handleHelpVideo = () => {
+//   const phoneNumber = "+14036201992";
+//   const userChoice = window.confirm("Do you want to call or send an SMS?");
 
-  if (userChoice) {
-    window.location.href = `tel:${phoneNumber}`;
-  } else {
-    window.location.href = `sms:${phoneNumber}`;
-  }
-  const telUrl = `tel:${phoneNumber}`;
-  window.location.href = telUrl;
-};
+//   if (userChoice) {
+//     window.location.href = `tel:${phoneNumber}`;
+//   } else {
+//     window.location.href = `sms:${phoneNumber}`;
+//   }
+//   const telUrl = `tel:${phoneNumber}`;
+//   window.location.href = telUrl;
+// };
 
 const StyledButtonAlignment = styled(Typography)`
   margin-top: 30px;
@@ -142,7 +142,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
   };
 
   const handleConfirmVideo = () => {
-    handleHelpVideo();
+    // handleHelpVideo();
     handleConfirm();
   };
 
@@ -196,7 +196,11 @@ const CallHelpButtonComponent = ({ onClick }) => {
           alignItems="center">
           Help request
           <div style={{ paddingLeft: "20px" }}>
+<<<<<<< HEAD
             {/* <AmbulanceSideIcon size={120} /> */}
+=======
+        
+>>>>>>> 6730fcd29d4483bf69f81e9b55e53636fffbd0b3
           </div>
         </Typography>
         <Typography
@@ -257,7 +261,11 @@ const CallHelpButtonComponent = ({ onClick }) => {
           alignItems="center">
           Help request sent
           <div style={{ paddingLeft: "20px" }}>
+<<<<<<< HEAD
             {/* <AmbulanceIcon size={120} /> */}
+=======
+          
+>>>>>>> 6730fcd29d4483bf69f81e9b55e53636fffbd0b3
           </div>
         </Typography>
         <Typography
@@ -324,7 +332,11 @@ const CallHelpButtonComponent = ({ onClick }) => {
           alignItems="center">
           Help request cancelled
           <div style={{ paddingLeft: "20px" }}>
+<<<<<<< HEAD
             {/* <NoAmbulanceIcon size={120} /> */}
+=======
+          
+>>>>>>> 6730fcd29d4483bf69f81e9b55e53636fffbd0b3
           </div>
         </Typography>
         <Typography

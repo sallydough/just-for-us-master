@@ -5,6 +5,21 @@ import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 import styled from "styled-components";
 import "./contacts.css";
 
+
+  // handle Help Button
+  const handleHelpVideo = () => {
+    const phoneNumber = "+14035102393";
+    const userChoice = window.confirm("Calling now...");
+
+    if (userChoice) {
+      window.location.href = `tel:${phoneNumber}`;
+    } else {
+      window.location.href = `sms:${phoneNumber}`;
+    }
+    const telUrl = `tel:${phoneNumber}`;
+    window.location.href = telUrl;
+  };
+
 const CustomArrowButton = styled.div`
   width: 60px;
   height: 60px;
@@ -116,7 +131,7 @@ const Contacts = () => {
               {contactList.map((card, idx) => (
                 <div
                   key={card.id}
-                  onClick={() => console.log(`Clicked on ${card.name}`)}
+                  onClick={handleHelpVideo}
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   {card.icon}
                   <h1 className="card-name">{card.name}</h1>
@@ -134,3 +149,5 @@ const Contacts = () => {
 };
 
 export default Contacts;
+
+

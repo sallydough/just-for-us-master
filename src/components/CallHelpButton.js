@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Typography } from "@mui/material";
 import Modal from "react-modal";
 import TelephoneIcon from "./icons/TelephoneIcon";
-// import { AmbulanceIcon, AmbulanceSideIcon, NoAmbulanceIcon } from "./icons";
+// // import { AmbulanceIcon, AmbulanceSideIcon, NoAmbulanceIcon } from "./icons";
 // import { FaPlus } from "react-icons/fa";
 
 // handle Help Button
@@ -196,11 +196,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           alignItems="center">
           Help request
           <div style={{ paddingLeft: "20px" }}>
-<<<<<<< HEAD
             {/* <AmbulanceSideIcon size={120} /> */}
-=======
-        
->>>>>>> 6730fcd29d4483bf69f81e9b55e53636fffbd0b3
           </div>
         </Typography>
         <Typography
@@ -261,11 +257,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           alignItems="center">
           Help request sent
           <div style={{ paddingLeft: "20px" }}>
-<<<<<<< HEAD
             {/* <AmbulanceIcon size={120} /> */}
-=======
-          
->>>>>>> 6730fcd29d4483bf69f81e9b55e53636fffbd0b3
           </div>
         </Typography>
         <Typography
@@ -332,11 +324,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           alignItems="center">
           Help request cancelled
           <div style={{ paddingLeft: "20px" }}>
-<<<<<<< HEAD
             {/* <NoAmbulanceIcon size={120} /> */}
-=======
-          
->>>>>>> 6730fcd29d4483bf69f81e9b55e53636fffbd0b3
           </div>
         </Typography>
         <Typography

@@ -80,6 +80,7 @@ const Activities = React.forwardRef((props, ref) => {
             name: `${item.firstname} ${item.lastname}`,
             item: item.item,
             startDate: moment(item.startdatestring.replace(/-/g, "/")).toDate(),
+            endDate: moment(item.enddatestring.replace(/-/g, "/")).toDate(),
             zoomLink:
               item.location === "Zoom Meeting"
                 ? "https://us06web.zoom.us/j/87666824017?pwd=RUZLSFVabjhtWjJVSm1CcDZsZXcrUT09"
@@ -151,7 +152,9 @@ const Activities = React.forwardRef((props, ref) => {
         <div className="slider-call-1">
           <div className="slider">
             <Slider {...settings}>
-              {events.map((event, idx) => (
+            {events
+                .filter((event) => !event.endDate || new Date() <= event.endDate)
+                .map((event, idx) => (
                 <div
                   key={event.id}
                   onClick={() => navigateToZoomLink(event)}

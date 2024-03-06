@@ -152,27 +152,31 @@ const Activities = React.forwardRef((props, ref) => {
         <div className="slider-call-1">
           <div className="slider">
             <Slider {...settings}>
-            {events
-                .filter((event) => !event.endDate || new Date() <= event.endDate)
+              {events
+                .filter(
+                  (event) => !event.endDate || new Date() <= event.endDate
+                )
                 .map((event, idx) => (
-                <div
-                  key={event.id}
-                  onClick={() => navigateToZoomLink(event)}
-                  className={idx === cardIndex ? "slide activeSlide" : "slide"}>
-                  <h1>{event.item}</h1>
-                  <p className="card-name" style={{ fontSize: 25 }}>
-                    {event.startDate.toLocaleString("en-US", {
-                      timeZone: "America/Edmonton",
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                    })}
-                  </p>
-                </div>
-              ))}
+                  <div
+                    key={event.id}
+                    onClick={() => navigateToZoomLink(event)}
+                    className={
+                      idx === cardIndex ? "slide activeSlide" : "slide"
+                    }>
+                    <h1>{event.item}</h1>
+                    <p className="card-name" style={{ fontSize: 25 }}>
+                      {event.startDate.toLocaleString("en-US", {
+                        timeZone: "America/Edmonton",
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                      })}
+                    </p>
+                  </div>
+                ))}
             </Slider>
           </div>
           <div className="prompt">
